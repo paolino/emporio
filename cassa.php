@@ -12,7 +12,7 @@
   <script src="jquery-ui-1.10.3/ui/jquery.ui.widPOST.js"></script>
   <script src="jquery-ui-1.10.3/ui/jquery.ui.datepicker.js"></script>
 </head>
-<BODY style="width:1024px">
+<BODY >
 
 
  
