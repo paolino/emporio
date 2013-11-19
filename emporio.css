@@ -1,0 +1,130 @@
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;}
+html, body {
+  height:100%;
+  margin:0;
+  padding:0;
+  font-size:14px;
+  color:#666;
+}
+header {
+  margin:5px;
+  height: auto;
+  background-color: #aaf;
+  color:#ffa;
+  font-size:1.2em;
+  position:relative;
+  z-index:1;
+}
+#nav {
+  background : #aaf;
+  margin-left:200px;
+  }
+#nav li {
+	display:inline;
+	margin-left:30px;
+	}
+.content {
+  margin:20px 20px 20px 20px;
+  background:white;
+  width:auto;
+  position:relative;
+  overflow:auto;
+}
+#report{
+  margin-top: 20px;
+  background: #afa;
+
+  }
+ footer {
+  margin:5px;
+  height: auto;
+  background-color: #aaf;
+  color:#ffa;
+  padding-top:5px ;
+  padding-bottom:5px;
+  padding-left:50px;
+  font-size:1em;
+   z-index:1;
+   background-color:#faf;
+}
+.CSSTableGenerator {
+margin:0px;padding:0px;
+width:100%;	
+border-radius:4px;
+}
+td {
+	vertical-align:bottom
+	 }
+
+.CSSTableGenerator tr:hover td{
+background-color:#aad4dd;
+}
+.CSSTableGenerator td{
+vertical-align:top;
+background-color:#aad4ff;
+font-weight:normal;
+
+border-radius:4px;
+  }
+.CSSTableGenerator th{
+vertical-align:top;
+background-color:#aad4aa;
+font-weight:normal;
+
+border-radius:4px;
+  }
+
+input.text 
+{
+    color: #455;
+    background-color: #eff;
+}
+
+
+select {
+	margin:5px;
+	margin-left:50px;
+	height:1.6em;
+	color:#666;
+	}
+	
+input.selezioni 
+{
+    color: #abb;
+    background-color: #abb;
+
+}
+input.selezioni:hover  
+{
+    color: #cdd;
+    background-color: #cdd;
+
+}
+
+input:hover
+{
+    color: #666;
+    background-color: #dee;
+}
+
+input
+{
+    color: #666;
+    background-color: #cdd;
+}
+
+
+input
+{
+
+    height: 1.6em;
+    width : auto%;
+    font-weight: none;
+    border:1px solid #999;
+    border-radius:5px;
+    box-shadow:1px 1px 3px;
+}
+
+
+

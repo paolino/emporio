@@ -54,72 +54,81 @@
 
   try {$db->query($q);} catch(PDOException $e) {echo "<script> alert(\"{$e->getMessage()}\") </script>";}
   ?> 
+  <header>
+  
+  <div id=nav>
+	<ul>
+			<li>
+		<a href=index.php> Emporio solidale val taro </a>
+	</li>
+
+	<li>
+		<a href=cassa.php> Cassa </a>
+	</li>
+		<li>
+		<a href=amministrazione.php> Amministrazione</a>
+		</li>
+		</ul>
+	</div>
+
+  </header>
+    <div class=content>
 
 <table style="width:100%">
-<tr>
-<td>
-<table class=CSSTableGenerator2>
-<tr>
-   <th><h3> Gestione acquisti </h3> </th>
-   <th><h3> Selezione acquisto </h3> </th>
-   <th><h3> Voci spesa acquisto <?php echo $_SESSION['acquisto']; ?> </h3> </th>
-</tr>
-<tr>
-<td>
-<div>
-   <table class=CSSTableGenerator >
-    <tr></tr>
-    <tr>
-    <td>
-      <form name="input" action="cassa.php" method="post">
-            <input type=hidden name="sql" value="nuovo_acquisto"> 
-        <ul>
-          <li> utente <input type="text" name="utente"  size=5 ></li>
-          <li><input type="submit" value="Apri acquisto"></li>
-        </ul>
-      </form>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <form name="input" action="cassa.php" method="post">
-            <input type=hidden name="sql" value="chiusura_acquisto"> 
-        <ul>
-	  
-          <li> acquisto <?php
-		if ($_SESSION['acquisto'] == "") 
-			echo '<input type="text" name="acquisto"  size=5 ></li>';
-			else echo "<input type=\"text\" name=\"acquisto\"  size=5 value={$_SESSION['acquisto']}></li>";
-		?>
-          <li> PIN <input type="password" name="pin"  size=5 ></li>
-          <li><input type="submit" value="Fine acquisto"></li>
-        </ul>
-      </form>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <form name="input" action="cassa.php" method="post">
-            <input type=hidden name="sql" value="fallimento_acquisto"> 
-        <ul>
-	  
-          <li> acquisto <?php
-		if ($_SESSION['acquisto'] == "") 
-			echo '<input type="text" name="acquisto"  size=5 ></li>';
-			else echo "<input type=\"text\" name=\"acquisto\"  size=5 value={$_SESSION['acquisto']}></li>";
-		?>
-          <li><input type="submit" value="Fallimento acquisto"></li>
-        </ul>
-      </form>
-    </td>
-  </tr>
- </table>
-</div>
-</td>
-<td>
-<div>
+	<tr>
+		<td>
+			<table class=CSSTableGenerator2>
+				<tr>
+					<td>
+					   <table class=CSSTableGenerator >
+						<tr></tr>
+						<tr>
+							<td>
+							  <form name="input" action="cassa.php" method="post">
+									<input type=hidden name="sql" value="nuovo_acquisto"> 
+								<table>
+								  <tr><td> utente </td><td> <input class=text type=text name="utente"  size=5 ></td></tr>
+								  <tr><td><input type="submit" value="Apri acquisto"></td></tr>
+								</table>
+							  </form>
+							</td>
+						</tr><tr>
+							<td>
+							  <form name="input" action="cassa.php" method="post">
+									<input type=hidden name="sql" value="chiusura_acquisto"> 
+								<table>
+							  
+								  <tr><td> acquisto </td><td><?php
+								if ($_SESSION['acquisto'] == "") 
+									echo '<input class=text type=text name="acquisto"  size=5 ></td></tr>';
+									else echo "<input class=text type=text name=\"acquisto\"  size=5 value={$_SESSION['acquisto']}></td></tr>";
+								?>
+								  <tr><td> PIN </td><td><input class=text type=password name="pin"  size=5 ></td></tr>
+								  <tr><td><input type="submit" value="Fine acquisto"></td></tr>
+								</table>
+							  </form>
+							</td>
+						</tr><tr>
 
-          <table class=CSSTableGenerator style="width:auto">   
+							<td>
+							  <form name="input" action="cassa.php" method="post">
+									<input type=hidden name="sql" value="fallimento_acquisto"> 
+								<table>
+							  
+								  <tr><td> acquisto </td><td><?php
+								if ($_SESSION['acquisto'] == "") 
+									echo '<input class=text type=text name="acquisto"  size=5 ></td></tr>';
+									else echo "<input class=text type=text name=\"acquisto\"  size=5 value={$_SESSION['acquisto']}></td></tr>";
+								?>
+								  <tr><td><input type="submit" value="Fallimento acquisto"></td></tr>
+								</table>
+							  </form>
+							</td>
+						  </tr>
+						 </table>
+						</td>
+						<td>
+							          <table class=CSSTableGenerator style="width:auto">   
 
       <?php   
 	   $rq = "SELECT acquisto,utente,residuo FROM acquisti_aperti join utenti using(utente)";
@@ -142,7 +151,7 @@
       foreach ($trs as $k => $q) {
         echo '<tr>';
         echo '<form action="cassa.php" method=POST>';  
-        echo "<td style=\"width: 50px\" > <input onClick=\"this.form.submit()\" type=submit name=acquisto value=\"" ;
+        echo "<td style=\"width: 50px\" > <input class=selezioni onClick=\"this.form.submit()\" type=submit name=acquisto value=\"" ;
         echo $q['acquisto']; 
         echo  ("\"></td></form>") ; 
 
@@ -152,10 +161,6 @@
   
       ?>
     </table>
-</div>
-</td>
-<td>
-<div>
     <table class=CSSTableGenerator style="width:auto" >   
 
       <?php   
@@ -179,7 +184,7 @@
         echo '<form action="cassa.php" method=POST>';  
         echo "<td style=\"width: 50px\" > 
 		<input type=\"hidden\" name=\"sql\" value=\"cancella_articolo\">
-		<input onClick=\"this.form.submit()\" type=submit name=articolo value=\"" ;
+		<input class=selezioni onClick=\"this.form.submit()\" type=submit name=articolo value=\"" ;
         print_r ($q['articolo']); 
         echo  ("\"></form> </td>") ; 
 
@@ -188,18 +193,12 @@
       }
       ?>
     </table>
+	</td>
+	</tr>
+	
 
-
-</div>
-</td>
-</tr>
-</table>
-</td>
-</tr>
 <tr>
-<td style="width:100%" colspan=3>
-<div style="width:100%">
-<h3> Inserimento voci spesa </h3> 
+<td  colspan=2>
   <table class=CSSTableGenerator style="width:100%">
   <tr> </tr>   
   <?php
@@ -223,10 +222,14 @@
   		}
   	?>
  </table>
-   
-</div>
 </td>
 </tr>
+</table>
+</div>
+<footer>
+Logic and design: paolo.veronelli@gmail.com
+</footer>
+
 </BODY>
 </HTML>
 
