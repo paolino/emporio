@@ -21,7 +21,7 @@ CREATE TABLE utenti (
 CREATE TABLE pin ( 
 
     utente   INTEGER NOT NULL references utenti,
-    pin  INTEGER NOT NULL unique check (pin > 1000),
+    pin  INTEGER NOT NULL,
     rilascio TEXT    NOT NULL
                      DEFAULT (date('now','localtime'))
     );
@@ -133,7 +133,7 @@ create table carico (
 create trigger carico after insert on carico begin
 	update articoli set magazzino = magazzino + new . carico where articolo=new.articolo;
 	end;
-
+	
 /*********************/
 /* archivio acquisti */
 /*********************/
@@ -183,13 +183,6 @@ CREATE TABLE spese (
                      REFERENCES articoli
     );
 
-create view fallimento as select acquisto from acquisti_aperti;
-create trigger fallimento instead of insert on fallimento begin
-	update utenti set residuo = residuo + (select sum(prezzo) from spese join quadro_articoli using(articolo) where acquisto = new.acquisto) where
-		utente = (select utente from acquisti_aperti where acquisto = new.acquisto);
-	delete from spese where acquisto = new.acquisto;
-	delete from acquisti where acquisto = new.acquisto;
-	end;
 
 
 /**********************************************/
@@ -240,3 +233,42 @@ create view scontrino as select acquisti.acquisto ,spese.articolo,descrizione,co
 
  
 create table amministrazione (login text not null);
+create table spese_semplici (
+	acquisto integer not null references acquisti,
+	spesa double not null,
+        data        DATE    NOT NULL
+                        DEFAULT CURRENT_TIMESTAMP 
+	);
+
+create trigger spesa_semplice_aperta before insert on spese_semplici when ((select utente from acquisti_aperti where acquisto = new.acquisto) isnull) begin
+	select raise (abort,"acquisto non aperto");
+	end;
+create trigger spese_semplici after insert on spese_semplici begin
+	update utenti set residuo = residuo - new.spesa where utente =  (select utente from acquisti_aperti where acquisto = new.acquisto);
+	end;
+create trigger recupero_spesa before insert on spese_semplici 
+	when ((select spesa from spese_semplici join acquisti_aperti using (acquisto) where acquisti_aperti.acquisto = new.acquisto) notnull) begin
+	update utenti set residuo 
+		= residuo + (select spesa from spese_semplici join acquisti_aperti using (acquisto) where acquisti_aperti.acquisto = new.acquisto) 
+			where utente =  (select utente from acquisti_aperti where acquisto = new.acquisto); 
+	delete from spese_semplici where acquisto = new.acquisto;
+	end;
+/*
+create trigger recupero_spesa_per_fallimento instead of insert on fallimento begin 
+	case when ((select spesa from spese_semplici join acquisti_aperti where acquisti_aperti.acquisto = new.acquisto) notnull) 
+	 then 	update utenti set residuo = residuo + (select sum(prezzo) from spese join quadro_articoli using(articolo) where acquisto = new.acquisto) where
+			utente = (select utente from acquisti_aperti where acquisto = new.acquisto); end;
+(select prezzo from spese join quadro_articoli using(articolo) where acquisto = new.acquisto) notnull)
+
+*/
+create view fallimento as select acquisto from acquisti_aperti;
+
+create trigger recupero_spesa_per_fallimento instead of insert on fallimento 
+	when ((select spesa from spese_semplici join acquisti_aperti where acquisti_aperti.acquisto = new.acquisto) notnull) begin
+	update utenti set residuo 
+		= residuo + (select spesa from spese_semplici join acquisti_aperti where acquisti_aperti.acquisto = new.acquisto) 
+			where utente =  (select utente from acquisti_aperti where acquisto = new.acquisto); 
+	delete from spese_semplici where acquisto = new.acquisto;
+	delete from acquisti where acquisto = new.acquisto;
+	end;
+

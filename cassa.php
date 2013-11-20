@@ -47,12 +47,14 @@
 			case "cancella_articolo":
 			      $q = "insert into cancella (acquisto,articolo) values ({$_SESSION['acquisto']},{$_POST['articolo']})";
 			      break;
-
+			case "spesa_semplice":
+			      $q="insert into spese_semplici (acquisto,spesa) values ({$_SESSION['acquisto']},{$_POST['spesa']})";
+			      break;
 			default:$q="";
 			}
   unset($_POST['sql']);
 
-  try {$db->query($q);} catch(PDOException $e) {echo "<script> alert(\"{$e->getMessage()}\") </script>";}
+  try {$db->query($q);} catch(PDOException $e) {echo "<script> alert(\"bingo {$e->getMessage()}\") </script>";}
   ?> 
   <header>
   
@@ -82,7 +84,7 @@
 					<td>
 					   <table class=CSSTableGenerator >
 						<tr></tr>
-						<tr>
+							<tr>
 							<td>
 							  <form name="input" action="cassa.php" method="post">
 									<input type=hidden name="sql" value="nuovo_acquisto"> 
@@ -92,7 +94,19 @@
 								</table>
 							  </form>
 							</td>
-						</tr><tr>
+						</tr>					
+<tr>
+							<td>
+							  <form name="input" action="cassa.php" method="post">
+									<input type=hidden name="sql" value="spesa_semplice"> 
+								<table>
+								  <tr><td> spesa </td><td> <input class=text type=text name="spesa"  size=5 ></td></tr>
+								  <tr><td><input type="submit" value="Spesa semplice"></td></tr>
+								</table>
+							  </form>
+							</td>
+						</tr>
+<tr>
 							<td>
 							  <form name="input" action="cassa.php" method="post">
 									<input type=hidden name="sql" value="chiusura_acquisto"> 

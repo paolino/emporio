@@ -236,8 +236,8 @@
       <form name="input" action="amministrazione.php" method="post">
       <input type=hidden name="sql" value="nuovo_utente"> 
         <table>      
-          <tr><td> utente </td><td><input class=text type=text name="utente" size=5></td></tr>
           <tr><td> colloquio </td><td><input class=text type=text name="colloquio"  size=5></td></tr>
+          <tr><td> utente </td><td><input class=text type=text name="utente" size=5></td></tr>
 
           <tr><td> nome </td><td><input class=text type=text name="nominativo" size=25></td></tr>
           <tr><td> punti </td><td><input class=text type=text name="punti" size=7></td></tr>
