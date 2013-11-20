@@ -9,6 +9,7 @@ html, body {
 }
 header {
   margin:5px;
+  padding:5px;
   height: auto;
   background-color: #aaf;
   color:#ffa;
@@ -17,12 +18,12 @@ header {
   z-index:1;
 }
 #nav {
+  float:left;
   background : #aaf;
-  margin-left:200px;
   }
-#nav li {
+#nav ul li {
 	display:inline;
-	margin-left:30px;
+	margin-left:30px;	
 	}
 .content {
   margin:20px 20px 20px 20px;

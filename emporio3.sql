@@ -1,7 +1,8 @@
 pragma foreign_key=on;
-/*********************/
-/* anagrafe minimale */
-/*********************/
+
+/*******************************************************/
+/* anagrafe con elementi relativi a  pin e valutazioni */
+/*******************************************************/
 
 CREATE TABLE utenti ( 
     utente         INTEGER PRIMARY KEY NOT NULL,
@@ -15,9 +16,9 @@ CREATE TABLE utenti (
 
     );
 
-/********************/
-/* rinnovo pin */
-/********************/
+/************************/
+/* storico rinnovo pin */
+/***********************/
 CREATE TABLE pin ( 
 
     utente   INTEGER NOT NULL references utenti,
@@ -30,9 +31,9 @@ create trigger pin after insert on pin begin
     update utenti set pin = new.pin where utente=new.utente;
     end;
 
-/******************************
-** valutazioni utenti *
-******************************/
+/******************************/
+/** valutazioni utenti */
+/******************************/
 
 CREATE TABLE valutazioni ( 
     utente INTEGER REFERENCES utenti
@@ -43,9 +44,15 @@ CREATE TABLE valutazioni (
     note   TEXT  not null
     );
 
+
 create trigger valutazioni after insert on valutazioni begin
     update utenti set punti = new.punti, valutazione = new.data where utente=new.utente; 
     end;
+
+/****************************************/
+/* introduzione semplificata utente */
+/* le tabelle pin e valutazione vengono popolate di conseguenza */
+/*********************************************/
 
 create view nuovoutente as select utente,colloquio,nominativo,pin,punti,valutazione,residuo from utenti;
 
@@ -55,9 +62,9 @@ create trigger nuovoutente instead of insert on nuovoutente begin
     insert into valutazioni (utente,punti,data,note) values (new.utente,new.punti,new.valutazione,'ingresso');
     end;
 
-/*******************************/
-/* eventi di ricarica */
-/*******************************/
+/************************************/
+/* eventi di ricarica valore tessere*/
+/************************************/
 
 
 CREATE TABLE ricariche ( 
@@ -67,12 +74,21 @@ CREATE TABLE ricariche (
     );
 
 
+/**********************************/
+/* validità valutazione ***********/
+/**********************************/
+
 CREATE TRIGGER ricarica AFTER INSERT ON ricariche
         BEGIN
             UPDATE utenti
                SET residuo = punti
                where julianday() < julianday (valutazione,'+6 months');
         end;
+
+/*****************************************/
+/* controllo di ricarica singola mensile */
+/*****************************************/
+
 CREATE TRIGGER ricaricadoppia AFTER INSERT ON ricariche 
 		when ((select data from ricariche where (date(data,'start of month') = date('now','start of month'))) notnull)
         BEGIN select raise(abort,"questo mese la ricarica è già avvenuta"); end;
@@ -81,7 +97,7 @@ CREATE TRIGGER ricaricadoppia AFTER INSERT ON ricariche
 
 /***********************************************/
 /*********************************/
-/* gestione magazzino e acquisti */
+/* gestione magazzino */
 /*********************************/
 /***********************************************/
 
@@ -134,6 +150,13 @@ create trigger carico after insert on carico begin
 	update articoli set magazzino = magazzino + new . carico where articolo=new.articolo;
 	end;
 	
+
+/***********************************************/
+/*********************************/
+/* gestione acquisti */
+/*********************************/
+/***********************************************/
+
 /*********************/
 /* archivio acquisti */
 /*********************/
@@ -157,11 +180,22 @@ create table chiusure (
                      DEFAULT CURRENT_TIMESTAMP
 	);
 
+/*************************************/
+/* selezione acquisti senza chiusura */
+/*************************************/
+
 create view acquisti_aperti as select acquisto,utente from acquisti where acquisto not in (select acquisto from chiusure);
 
+/*************************************/
+/* controllo di acquisto aperto singolo per ogni utente */
+/**********************************************************/
 create trigger doppio_acquisto before insert on acquisti when (new.utente in (select utente from acquisti_aperti)) begin
 	select raise(abort,"due acquisti contemporanei per utente");
 	end;
+
+/***************************************/
+/* chiusura con controllo pin */
+/**********************************/
 
 create view chiusura as select acquisto,pin from acquisti_aperti join utenti using(utente);
 create trigger chiusura_errata instead of insert on chiusura when (new.pin != (select pin from chiusura where acquisto = new.acquisto)) begin
@@ -184,7 +218,6 @@ CREATE TABLE spese (
     );
 
 
-
 /**********************************************/
 /* controllo per spesa di acquisto non chiuso */
 /**********************************************/
@@ -203,7 +236,7 @@ create trigger articolo_prezzato after insert on spese when ((select prezzo from
 
 
 /******************************************************************/
-/* effetto di spesa di riduzione residuo per la pin coinvolta */
+/* effetto di spesa di riduzione residuo per l'utente coinvolto */
 /******************************************************************/
 
 create trigger riduzione_residuo after insert on spese begin
@@ -212,9 +245,10 @@ create trigger riduzione_residuo after insert on spese begin
 			where utente = (select utente from  acquisti where acquisto = new.acquisto);
 	end;
 
+/********************************/
+/* cancellazione spesa articolo */
+/********************************/
 
-	
-/* cancellazione spesa */
 create view cancella as select acquisto,articolo from acquisti_aperti join spese using (acquisto);
 
 create trigger cancella instead of insert on cancella when 
@@ -227,12 +261,18 @@ create trigger cancella instead of insert on cancella when
 		
 
 
-create view scontrino as select acquisti.acquisto ,spese.articolo,descrizione,count(*) as numero,count(*) * prezzo as valore from 
-   acquisti join quadro_articoli join spese on 
-     (acquisti.acquisto = spese.acquisto and quadro_articoli.articolo = spese.articolo) group by spese.articolo,spese.acquisto;
 
- 
+/********************************************/
+/* passwords di accesso all'amministrazione */
+/********************************************/
+
 create table amministrazione (login text not null);
+
+
+/*******************************/
+/* gestione spesa semplice */
+/******************************/
+
 create table spese_semplici (
 	acquisto integer not null references acquisti,
 	spesa double not null,
@@ -252,22 +292,37 @@ create trigger recupero_spesa before insert on spese_semplici
 		= residuo + (select spesa from spese_semplici join acquisti_aperti using (acquisto) where acquisti_aperti.acquisto = new.acquisto) 
 			where utente =  (select utente from acquisti_aperti where acquisto = new.acquisto); 
 	delete from spese_semplici where acquisto = new.acquisto;
-	end;
-/*
-create trigger recupero_spesa_per_fallimento instead of insert on fallimento begin 
-	case when ((select spesa from spese_semplici join acquisti_aperti where acquisti_aperti.acquisto = new.acquisto) notnull) 
-	 then 	update utenti set residuo = residuo + (select sum(prezzo) from spese join quadro_articoli using(articolo) where acquisto = new.acquisto) where
-			utente = (select utente from acquisti_aperti where acquisto = new.acquisto); end;
-(select prezzo from spese join quadro_articoli using(articolo) where acquisto = new.acquisto) notnull)
 
-*/
+
+/*********************************************************/
+/* gestione fallimento operazione in cassa */
+/*********************************************************/
+
 create view fallimento as select acquisto from acquisti_aperti;
 
-create trigger recupero_spesa_per_fallimento instead of insert on fallimento 
-	when ((select spesa from spese_semplici join acquisti_aperti where acquisti_aperti.acquisto = new.acquisto) notnull) begin
+create trigger recupero_spesa_per_fallimento instead of insert on fallimento begin	
 	update utenti set residuo 
-		= residuo + (select spesa from spese_semplici join acquisti_aperti where acquisti_aperti.acquisto = new.acquisto) 
-			where utente =  (select utente from acquisti_aperti where acquisto = new.acquisto); 
+		= residuo + (
+			select case 
+				when ((select spesa from spese_semplici join acquisti_aperti using (acquisto) 
+						where acquisti_aperti.acquisto = new.acquisto) notnull) 
+					then (select spesa from spese_semplici join acquisti_aperti using (acquisto) 
+						where acquisti_aperti.acquisto = new.acquisto) 
+					else 0 
+				end
+			)
+			where utente =  (select utente from acquisti_aperti where acquisto = new.acquisto);
+	update utenti set residuo 
+		= residuo + (
+			select case 
+				when ((select prezzo from spese join quadro_articoli using(articolo) where acquisto = new.acquisto) notnull)
+					then (select sum(prezzo) from spese join quadro_articoli using(articolo) where acquisto = new.acquisto) 
+					else 0 
+				end
+			)
+			where utente =  (select utente from acquisti_aperti where acquisto = new.acquisto);
+
+	delete from spese where acquisto = new.acquisto;
 	delete from spese_semplici where acquisto = new.acquisto;
 	delete from acquisti where acquisto = new.acquisto;
 	end;
