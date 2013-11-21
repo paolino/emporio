@@ -1,0 +1,33 @@
+<?php
+        $rq = "SELECT articolo,descrizione,numero,valore FROM scontrino where acquisto={$_SESSION['acquisto']} order by descrizione";
+        $trs = $db -> query($rq) -> fetchAll(PDO::FETCH_ASSOC);
+        $tks=array("articolo","descrizione","numero","valore");
+?>
+
+<table class=CSSTableGenerator>   
+        <tr>
+        <?php
+        echo '<th style="width: 50px">storno</th>';
+        foreach($tks as $k){
+                echo '<th>';
+                print_r ($k);
+                echo '</th>';
+        }
+        ?>
+        </tr>
+        <?php
+        foreach ($trs as $k => $q) {
+                echo '<tr>';
+                echo '<form action="cassa.php" method=POST>';  
+                echo "<td style=\"width: 50px\" > 
+                        <input type=\"hidden\" name=\"sql\" value=\"cancella_articolo\">
+                        <input class=selezioni onClick=\"this.form.submit()\" type=submit name=articolo value=\"" ;
+                print_r ($q['articolo']); 
+                echo  ("\"></form> </td>") ; 
+
+                foreach ($q as $s){echo '<td>';print_r($s); echo '</td>';}
+                echo '</tr>';
+        }
+        ?>
+</table>
+

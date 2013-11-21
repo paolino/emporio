@@ -25,125 +25,36 @@ if($_POST['acquisto'] != "") $_SESSION['acquisto'] = $_POST['acquisto'];
 include "cassaquery.php";
 ?>
  
-<header>
-
-<div id=nav>
-<ul>
-<li>
-<a href=index.php> Home </a>
-</li>
-
-<li>
-<a href=cassa.php> Cassa </a>
-</li>
-<li>
-<a href=amministrazione.php> Amministrazione</a>
-</li>
-</ul>
-</div>
-
+<header> <div id=nav>
+                <ul><li>
+                <a href=index.php> Home </a>
+                </li><li>
+                <a href=cassa.php> Cassa </a>
+                </li><li>
+                <a href=amministrazione.php> Amministrazione</a>
+                </li></ul>
+        </div>
 </header>
 
 
 <div class=content>
 
-<table class=GT>
-<tr>
 <?php include "cassaforms.php";?>
-</tr>
+
+<table class = GT>
+<tr><td>
+<?php include "selezioneacquisto.php";?>
+</td><td>
+<?php  
+if ( $_SESSION['acquisto']!="") include "scontrino.php";
+?>
+</td></tr>
 </table>
 
-<table class=CSSTableGenerator >   
-
-<?php   
-$rq = "SELECT acquisto,utente,residuo FROM acquisti_aperti join utenti using(utente)";
-$trs = $db -> query($rq) -> fetchAll(PDO::FETCH_ASSOC);
-$tks= array("acquisto","utente","residuo");
-?>
-<tr>
 <?php
-echo '<th style="width: 50px">selezione</th>';
-foreach($tks as $k){
-	echo '<th>';
-	print_r ($k);
-	echo '</th>';
-}
+include "vendita.php";
 ?>
-</tr>
 
-<?php
-
-foreach ($trs as $k => $q) {
-	echo '<tr>';
-	echo '<form action="cassa.php" method=POST>';  
-	echo "<td style=\"width: 50px\" > <input class=selezioni onClick=\"this.form.submit()\" type=submit name=acquisto value=\"" ;
-	echo $q['acquisto']; 
-	echo  ("\"></td></form>") ; 
-
-	foreach ($q as $s){echo '<td>';print_r($s); echo '</td>';}
-	echo '</tr>';
-}
-
-?>
-</table>
-
-<table class=CSSTableGenerator>   
-
-<?php   
-$rq = "SELECT articolo,descrizione,numero,valore FROM scontrino where acquisto={$_SESSION['acquisto']} order by descrizione";
-$trs = $db -> query($rq) -> fetchAll(PDO::FETCH_ASSOC);
-$tks=array("articolo","descrizione","numero","valore");
-?>
-<tr>
-<?php
-echo '<th style="width: 50px">storno</th>';
-foreach($tks as $k){
-	echo '<th>';
-	print_r ($k);
-	echo '</th>';
-}
-?>
-</tr>
-<?php
-foreach ($trs as $k => $q) {
-	echo '<tr>';
-	echo '<form action="cassa.php" method=POST>';  
-	echo "<td style=\"width: 50px\" > 
-		<input type=\"hidden\" name=\"sql\" value=\"cancella_articolo\">
-		<input class=selezioni onClick=\"this.form.submit()\" type=submit name=articolo value=\"" ;
-	print_r ($q['articolo']); 
-	echo  ("\"></form> </td>") ; 
-
-	foreach ($q as $s){echo '<td>';print_r($s); echo '</td>';}
-	echo '</tr>';
-}
-?>
-</table>
-
-
-<table class=CSSTableGenerator style="width:100%">
-<tr> </tr>   
-<?php
-$rq = "SELECT * FROM quadro_articoli order by descrizione";
-$trs = $db -> query($rq) -> fetchAll(PDO::FETCH_ASSOC);
-
-for ($i = 0; $i < 12; $i++) {
-	echo '<tr>';
-	for ($j = 0; $j < 8; $j++) {
-		echo '<td>';
-		$v= $trs[$i*8 + $j]['descrizione'];
-		$v2 = $trs[$i*8 + $j]['articolo'];
-		echo  "<form name=\"input\" action=\"cassa.php\" method=\"POST\">"; 
-		echo "<input class=merce style=\"width:100%\" type=submit name=\"desc\" value=\"{$v}\">";
-		echo "<input type=hidden name=\"articolo\" value=\"{$v2}\">";
-		echo "<input type=hidden name=\"sql\" value=\"nuova_spesa\">";
-		echo "</form>"; 
-		echo '</td>';
-	}
-	echo '</tr>';
-}
-?>
-</table>
 
 <footer>
 Logic and design: paolo.veronelli@gmail.com
