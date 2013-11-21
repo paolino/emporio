@@ -1,7 +1,7 @@
 <?php
 function removeprob($s){return str_replace("'", "", $s);}
 
-switch($_SESSION['sql']) {
+switch($_POST['sql']) {
 	case "nuovo_utente": 
 		$nominativo = removeprob($_POST['nominativo']);
 		$q="insert into nuovoutente (utente,colloquio,nominativo,pin,punti,valutazione,residuo) values 

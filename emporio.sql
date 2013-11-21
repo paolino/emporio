@@ -335,6 +335,13 @@ create trigger recupero_spesa_per_fallimento instead of insert on fallimento beg
 /* amministrazione *****************/
 /***********************************/
 
-create table dizionario (
-	amministrazione text references amministrazione;
+create table amministrazione (login text not null);
+
+
+create view scontrino as select acquisti.acquisto ,spese.articolo,descrizione,count(*) as numero,count(*) * prezzo as valore from
+   acquisti join quadro_articoli join spese on
+     (acquisti.acquisto = spese.acquisto and quadro_articoli.articolo = spese.articolo) group by spese.articolo,spese.acquisto;
+
+ 
+
 	

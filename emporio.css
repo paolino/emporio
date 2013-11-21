@@ -18,7 +18,6 @@ header {
   z-index:1;
 }
 #nav {
-  float:left;
   background : #aaf;
   }
 #nav ul li {
@@ -63,18 +62,32 @@ background-color:#aad4dd;
 }
 .CSSTableGenerator td{
 vertical-align:top;
-background-color:#aad4ff;
 font-weight:normal;
-
+background-color:#aad4ff;
 border-radius:4px;
   }
 .CSSTableGenerator th{
 vertical-align:top;
 background-color:#aad4aa;
 font-weight:normal;
+border-radius:4px;
+}
 
+.GT {
+margin:0px;padding:0px;
+width:100%;	
+border-radius:4px;
+}
+.GT td{
+vertical-align:top;
+font-weight:normal;
 border-radius:4px;
   }
+.GT th{
+vertical-align:top;
+font-weight:normal;
+border-radius:4px;
+}
 
 input.text 
 {
@@ -128,4 +141,19 @@ input
 }
 
 
-
+.magazzino {
+	background-color:#aad4dd;
+	}
+#ricarica {
+	background-color:#fda;
+	}
+.utente {
+	background-color:#adf;
+	}
+.transaction {
+	background-color:#f77;
+	}
+td.transaction {
+	padding:4px;
+	padding-left:10px;
+	}

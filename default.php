@@ -13,18 +13,18 @@
 		if($_SESSION['record'] != "" && $_SESSION['tabella'] != "" && $trs[$_SESSION['record']]['utente'] != null ){
 			$utente=$trs[$_SESSION['record']]['utente'];
 			$_SESSION['lastutente']=$utente;
-			$campoutente= " utente</td><td><input class=text type=text name=\"utente\" value=\"{$utente}\" size=5 >";
+			$campoutente= " utente</td><td class=utente><input class=text type=text name=\"utente\" value=\"{$utente}\" size=5 >";
 			}
 		elseif  ($_SESSION['lastutente'] != "") 
-			$campoutente= " utente</td><td><input class=text type=text name=\"utente\" value=\"{$_SESSION['lastutente']}\" size=5 >";
-		else $campoutente= " utente</td><td><input class=text type=text name=\"utente\"  size=5 >";
+			$campoutente= " utente</td><td class=utente><input class=text type=text name=\"utente\" value=\"{$_SESSION['lastutente']}\" size=5 >";
+		else $campoutente= " utente</td><td class=utente><input class=text type=text name=\"utente\"  size=5 >";
 		
 		if($_SESSION['record'] != "" && $_SESSION['tabella'] != "" && $trs[$_SESSION['record']]['articolo'] != null ){
 			$articolo=$trs[$_SESSION['record']]['articolo'];
 			$_SESSION['lastarticolo']=$articolo;
-			$campoarticolo= " articolo</td><td><input class=text type=text name=\"articolo\" value=\"{$articolo}\" size=5 >";
+			$campoarticolo= " articolo</td><td class=magazzino><input class=text type=text name=\"articolo\" value=\"{$articolo}\" size=5 >";
 			}
 		elseif  ($_SESSION['lastarticolo'] != "") 
-			$campoarticolo= " articolo</td><td><input class=text type=text name=\"articolo\" value=\"{$_SESSION['lastarticolo']}\" size=5 >";
-		else $campoarticolo= " articolo</td><td><input class=text type=text name=\"articolo\"  size=5 >";
+			$campoarticolo= " articolo</td><td class=magazzino><input class=text type=text name=\"articolo\" value=\"{$_SESSION['lastarticolo']}\" size=5 >";
+		else $campoarticolo= " articolo</td><td class=magazzino><input class=text type=text name=\"articolo\"  size=5 >";
 ?>

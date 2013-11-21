@@ -19,49 +19,18 @@
 
 <?php
 session_start();
+
 if($_POST['acquisto'] != "") $_SESSION['acquisto'] = $_POST['acquisto'];
 
-
-try {
-	$db = new PDO('sqlite:emporio4');  
-	$db-> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-	$db-> query("PRAGMA foreign_keys=on;");
-} catch(PDOException $e) 
-{echo "<script> alert('{$e->getMessage()}') </script>";}
-
-function removeprob($s){return str_replace("'", "", $s);}
-switch($_POST['sql']) {
-
-	case "nuovo_acquisto":
-		$q="insert into acquisti (utente) values ({$_POST['utente']})";
-		break;
-	case "chiusura_acquisto":
-		$q="insert into chiusura (acquisto,pin) values ({$_POST['acquisto']},{$_POST['pin']})";
-		break;
-	case "fallimento_acquisto":
-		$q="insert into fallimento (acquisto) values ({$_POST['acquisto']})";
-		break;
-	case "nuova_spesa":
-		$q = "insert into spese (acquisto,articolo) values ({$_SESSION['acquisto']},{$_POST['articolo']})";
-		break;
-	case "cancella_articolo":
-		$q = "insert into cancella (acquisto,articolo) values ({$_SESSION['acquisto']},{$_POST['articolo']})";
-		break;
-	case "spesa_semplice":
-		$q="insert into spese_semplici (acquisto,spesa) values ({$_SESSION['acquisto']},{$_POST['spesa']})";
-		break;
-	default:$q="";
-}
-unset($_POST['sql']);
-
-try {$db->query($q);} catch(PDOException $e) {echo "<script> alert(\"bingo {$e->getMessage()}\") </script>";}
-?> 
+include "cassaquery.php";
+?>
+ 
 <header>
 
 <div id=nav>
 <ul>
 <li>
-<a href=index.php> Emporio solidale val taro </a>
+<a href=index.php> Home </a>
 </li>
 
 <li>
@@ -74,75 +43,17 @@ try {$db->query($q);} catch(PDOException $e) {echo "<script> alert(\"bingo {$e->
 </div>
 
 </header>
+
+
 <div class=content>
 
-<table style="width:100%">
+<table class=GT>
 <tr>
-<td>
-<table class=CSSTableGenerator2>
-<tr>
-<td>
-<table class=CSSTableGenerator >
-<tr></tr>
-<tr>
-<td>
-<form name="input" action="cassa.php" method="post">
-<input type=hidden name="sql" value="nuovo_acquisto"> 
-<table>
-<tr><td> utente </td><td> <input class=text type=text name="utente"  size=5 ></td></tr>
-<tr><td><input type="submit" value="Apri acquisto"></td></tr>
-</table>
-</form>
-</td>
-</tr>					
-<tr>
-<td>
-<form name="input" action="cassa.php" method="post">
-<input type=hidden name="sql" value="spesa_semplice"> 
-<table>
-<tr><td> spesa </td><td> <input class=text type=text name="spesa"  size=5 ></td></tr>
-<tr><td><input type="submit" value="Spesa semplice"></td></tr>
-</table>
-</form>
-</td>
-</tr>
-<tr>
-<td>
-<form name="input" action="cassa.php" method="post">
-<input type=hidden name="sql" value="chiusura_acquisto"> 
-<table>
-
-<tr><td> acquisto </td><td><?php
-if ($_SESSION['acquisto'] == "") 
-echo '<input class=text type=text name="acquisto"  size=5 ></td></tr>';
-else echo "<input class=text type=text name=\"acquisto\"  size=5 value={$_SESSION['acquisto']}></td></tr>";
-?>
-<tr><td> PIN </td><td><input class=text type=password name="pin"  size=5 ></td></tr>
-<tr><td><input type="submit" value="Fine acquisto"></td></tr>
-</table>
-</form>
-</td>
-</tr><tr>
-
-<td>
-<form name="input" action="cassa.php" method="post">
-<input type=hidden name="sql" value="fallimento_acquisto"> 
-<table>
-
-<tr><td> acquisto </td><td><?php
-if ($_SESSION['acquisto'] == "") 
-echo '<input class=text type=text name="acquisto"  size=5 ></td></tr>';
-else echo "<input class=text type=text name=\"acquisto\"  size=5 value={$_SESSION['acquisto']}></td></tr>";
-?>
-<tr><td><input type="submit" value="Fallimento acquisto"></td></tr>
-</table>
-</form>
-</td>
+<?php include "cassaforms.php";?>
 </tr>
 </table>
-</td>
-<td>
-<table class=CSSTableGenerator style="width:auto">   
+
+<table class=CSSTableGenerator >   
 
 <?php   
 $rq = "SELECT acquisto,utente,residuo FROM acquisti_aperti join utenti using(utente)";
@@ -175,7 +86,8 @@ foreach ($trs as $k => $q) {
 
 ?>
 </table>
-<table class=CSSTableGenerator style="width:auto" >   
+
+<table class=CSSTableGenerator>   
 
 <?php   
 $rq = "SELECT articolo,descrizione,numero,valore FROM scontrino where acquisto={$_SESSION['acquisto']} order by descrizione";
@@ -207,12 +119,8 @@ foreach ($trs as $k => $q) {
 }
 ?>
 </table>
-</td>
-</tr>
 
 
-<tr>
-<td  colspan=2>
 <table class=CSSTableGenerator style="width:100%">
 <tr> </tr>   
 <?php
@@ -236,10 +144,7 @@ for ($i = 0; $i < 12; $i++) {
 }
 ?>
 </table>
-</td>
-</tr>
-</table>
-</div>
+
 <footer>
 Logic and design: paolo.veronelli@gmail.com
 </footer>

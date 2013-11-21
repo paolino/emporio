@@ -28,13 +28,16 @@ session_start();
 include "access.php";
 
 if($_SESSION['transaction'] == "") $_SESSION['transaction'] = array();
-
 if ($access) {
 	include "transact.php";
 	foreach($_POST as $k => $v) $_SESSION[$k]=$v;
+print_r ($_SESSION['transaction']);
 }	
 ?>   
 <header>
+	<table>
+	<tr>
+	<td>
 	<div id=nav >
 		<ul><li>
 			<a href=index.php> Home </a>
@@ -45,22 +48,29 @@ if ($access) {
 			</li><li>
 		</ul>
 	</div>
+	</td><td style="width:30%">
 	<div id=login>	
 		<form name="input" action="amministrazione.php" method="post">
-			password <input class=text type=password name="login" size=12>
+			password <input class=text type=password name="login" size=25>
 			<input type="submit" value="Login">
 		</form>   
+	
+	</div>
+	</td><td style="width:10%">
+	
 		<form name="input" action="amministrazione.php" method="post">
 		        <input type=hidden name="logout" value=1>
 			<input type="submit" value="Logout">
 		</form> 
-	</div>
+	</td>
+	</tr>
+	</table>
 
 </header>
 
 <div class=content>
 
-	<table class=CSSTableGenerator> 
+	<table class=GT> 
 		<tr>
 			<?php 
 			if($_SESSION['tabella'] == "") $_SESSION['tabella'] = 'nuovoutente';

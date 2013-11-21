@@ -9,10 +9,13 @@ if ($_POST['back'] != ""){
 	unset($_POST['back']);
 }
 
-
+echo "eccomi -";
+print_r ($_POST['sql']);
 include 'switch.php';
 
-unset($_SESSION['sql']);
+print_r ($_SESSION['transaction']);
+unset($_POST['sql']);
+
 
 $db -> beginTransaction();
 
