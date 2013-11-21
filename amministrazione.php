@@ -51,6 +51,7 @@ if ($access) {
 			<input type="submit" value="Login">
 		</form>   
 		<form name="input" action="amministrazione.php" method="post">
+		        <input type=hidden name="logout" value=1>
 			<input type="submit" value="Logout">
 		</form> 
 	</div>
