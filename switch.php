@@ -18,16 +18,9 @@ switch($_POST['sql']) {
 		break;
 	case  "nuovo_articolo":
 		$descrizione = removeprob($_POST['descrizione']);
-		$q="insert into articoli (descrizione) values 
+		$q="insert into prezzi values 
 			(
 			 '{$descrizione}'
-			);";
-		break;
-	case "carico_magazzino":
-		$q="insert into carico (articolo,carico) values 
-			(
-			 {$_POST['articolo']}
-			 ,{$_POST['carico']}
 			);";
 		break;
 	case "nuova_ricarica":
@@ -44,22 +37,6 @@ switch($_POST['sql']) {
 			break;
 	case "nuova_tessera":
 		$q="insert into pin (utente,pin) values ({$_POST['utente']},{$_POST['pin']})";
-		break;
-	case "nuovo_prezzo":
-		$q="insert into prezzi (articolo,prezzo) values (
-		{$_POST['articolo']}
-		,{$_POST['prezzo']}
-		);";
-		break;			       
-	case "nuovo_acquisto":
-		$q="insert into acquisti (utente) values ({$_POST['utente']})";
-		break;
-	case "nuova_spesa":
-		$q = "insert into spese (acquisto,articolo,numero) values (
-		{$_POST['acquisto']}
-		,{$_POST['articolo']}
-		,{$_POST['numero']}
-		)";
 		break;
 	default:		$q="";
 }

@@ -19,21 +19,46 @@
 
 <?php
 session_start();
+include "access.php";
 
 if($_POST['acquisto'] != "") $_SESSION['acquisto'] = $_POST['acquisto'];
 
 include "cassaquery.php";
+
 ?>
- 
-<header> <div id=nav>
-                <ul><li>
-                <a href=index.php> Home </a>
-                </li><li>
-                <a href=cassa.php> Cassa </a>
-                </li><li>
-                <a href=amministrazione.php> Amministrazione</a>
-                </li></ul>
-        </div>
+ <header>
+	<table>
+	<tr>
+	<td>
+	<div id=nav >
+		<ul><li>
+			<a href=index.php> Home </a>
+			</li><li>
+			<a href=cassa.php> Cassa </a>
+			</li><li>
+			<a href=amministrazione.php> Amministrazione</a>
+			</li><li>
+		</ul>
+	</div>
+	</td>
+	<td>	
+	<?php if (! $access): ?> 
+	<div id=login>	
+		<form name="input" action="cassa.php" method="post">
+			<input class=text type=password name="login" size=25>
+			<input type="submit" value="Login">
+		</form>   
+	</div>
+	<?php else: ?>
+	
+		<form name="input" action="cassa.php" method="post">
+		        <input type=hidden name="logout" value=1>
+			<input type="submit" value="Logout">
+		</form> 
+	<?php endif; ?>
+	</td>
+	</tr>
+	</table>
 </header>
 
 
@@ -43,16 +68,22 @@ include "cassaquery.php";
 
 <table class = GT>
 <tr><td>
-<?php include "selezioneacquisto.php";?>
+<?php if ( $_SESSION['acquisto']!="") include "acquistoselezionato.php" ?>
+
 </td><td>
 <?php  
-if ( $_SESSION['acquisto']!="") include "scontrino.php";
+if ( $_SESSION['acquisto']!="") {
+	include "scontrino.php";
+	} 
 ?>
 </td></tr>
 </table>
 
 <?php
-include "vendita.php";
+if ( $_SESSION['acquisto']!=""){
+	include "vendita.php";
+	include "termineacquisto.php";
+	}
 ?>
 
 

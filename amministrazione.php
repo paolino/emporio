@@ -31,10 +31,9 @@ if($_SESSION['transaction'] == "") $_SESSION['transaction'] = array();
 if ($access) {
 	include "transact.php";
 	foreach($_POST as $k => $v) $_SESSION[$k]=$v;
-print_r ($_SESSION['transaction']);
 }	
-?>   
-<header>
+?>  
+ <header>
 	<table>
 	<tr>
 	<td>
@@ -48,25 +47,28 @@ print_r ($_SESSION['transaction']);
 			</li><li>
 		</ul>
 	</div>
-	</td><td style="width:30%">
+	</td>
+	<td>	
+	<?php if (! $access): ?> 
 	<div id=login>	
 		<form name="input" action="amministrazione.php" method="post">
-			password <input class=text type=password name="login" size=25>
+			<input class=text type=password name="login" size=25>
 			<input type="submit" value="Login">
 		</form>   
-	
 	</div>
-	</td><td style="width:10%">
+	<?php else: ?>
 	
 		<form name="input" action="amministrazione.php" method="post">
 		        <input type=hidden name="logout" value=1>
 			<input type="submit" value="Logout">
 		</form> 
+	<?php endif; ?>
 	</td>
 	</tr>
 	</table>
-
 </header>
+ 
+
 
 <div class=content>
 
@@ -78,10 +80,10 @@ print_r ($_SESSION['transaction']);
 			?>
 		</tr>
 	</table>'
-	<?php if ($access) include 'report.php';?>
+	<?php if ($access) include 'report.php';
+	?>
 
 </div> 
-
 <footer>
 	Logic and design: paolo.veronelli@gmail.com
 </footer>

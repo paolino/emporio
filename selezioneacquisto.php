@@ -1,9 +1,16 @@
 <table class=CSSTableGenerator >   
 
 <?php   
-$rq = "SELECT acquisto,utente,residuo FROM acquisti_aperti join utenti using(utente)";
+if(!$access){
+	$rq = "SELECT acquisto,utente,residuo FROM acquisti_aperti join utenti using(utente)";
+	$tks= array("acquisto","utente","residuo");
+	}
+else {
+	$rq = "SELECT acquisto,utente,nominativo,punti,residuo FROM acquisti_aperti join utenti using(utente)";
+	$tks= array("acquisto","utente","nominativo","punti","residuo");
+	}
+
 $trs = $db -> query($rq) -> fetchAll(PDO::FETCH_ASSOC);
-$tks= array("acquisto","utente","residuo");
 ?>
 <tr>
 <?php
@@ -28,7 +35,7 @@ foreach ($trs as $k => $q) {
 	foreach ($q as $s){echo '<td>';print_r($s); echo '</td>';}
 	echo '</tr>';
 }
-
+if ($_SESSION['acquisto'] == "") $_SESSION['acquisto'] = $trs[0]['acquisto'];
 ?>
 </table>
 

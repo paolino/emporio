@@ -10,12 +10,12 @@ html, body {
 header {
   margin:5px;
   padding:5px;
-  height: auto;
+  height: 5em;
   background-color: #aaf;
   color:#ffa;
-  font-size:1.2em;
   position:relative;
   z-index:1;
+  border-radius:4px;
 }
 #nav {
   background : #aaf;
@@ -23,6 +23,8 @@ header {
 #nav ul li {
 	display:inline;
 	margin-left:30px;	
+	font-size:1.5em;
+	font-weight:bold;
 	}
 .content {
   margin:20px 20px 20px 20px;
@@ -33,7 +35,7 @@ header {
 }
 #report{
   margin-top: 20px;
-  background: #afa;
+  background: #eee;
 
   }
  footer {
@@ -159,5 +161,19 @@ td.transaction {
 	}
 .cassa {
 	background-color:#faa;
+	font-weight:bold;
+	font-size:1.1em;
 	}
+#acquistoselezionato { 
+	width :  100%;
+	padding:10px;
+	font-weight:bold;
+	border-radius:5px;
+	font-size:1.5em;
+	}
+	
 
+#moltiplicatore input{
+	background-color:#ad9;
+	}
+	

@@ -1,18 +1,4 @@
-<?php		$tks=array();
-		 if($_SESSION['tabella'] != ""){
-			$rcs = $db -> query("pragma table_info ({$_SESSION['tabella']})")-> fetchAll(PDO::FETCH_ASSOC);
-			 foreach($rcs as $r) array_push($tks,$r['name']);
-			 if (!in_array($_SESSION['colonna'],$tks)) $rq = "SELECT * FROM '{$_SESSION['tabella']}'";
-				else $rq = "SELECT * FROM '{$_SESSION['tabella']}' order by {$_SESSION['colonna']} asc";
-			$trs = $db -> query($rq) -> fetchAll(PDO::FETCH_ASSOC);
-			}
-			else {
-			$trs= array();
-
-			}
-include "default.php";
-?>
-
+<?php include "default.php"; ?>
 
 
 
@@ -51,9 +37,9 @@ include "default.php";
       <form name="input" action="amministrazione.php" method="post">
       <input type=hidden name="sql" value="nuovo_articolo"> 
         <table >
-          <tr><td class=magazzino> descrizione </td><td class=magazzino><input class=text type=text name="descrizione"  size=30></td></tr>
+          <tr><td class=magazzino> valore </td><td class=magazzino><input class=text type=text name="descrizione"  size=30></td></tr>
 
-          <tr><td class=magazzino></td><td class=magazzino><input class=magazzino type="submit" value="Nuovo articolo"></td></tr>
+          <tr><td class=magazzino></td><td class=magazzino><input class=magazzino type="submit" value="Nuovo prezzo"></td></tr>
         </table>
       </form>
     </td>
@@ -70,19 +56,7 @@ include "default.php";
         </table>
       </form>
     </td>
-
-    <td  class=magazzino>
-      <form name="input" action="amministrazione.php" method="post">
-            <input type=hidden name="sql" value="carico_magazzino"> 
-        <table>
-          <tr><td class=magazzino> <?php echo $campoarticolo ?></td></tr>
-          <tr><td class=magazzino> carico </td><td class=magazzino><input class=text type=text name="carico"  size=7></td>
-          <td><input type="submit" value="Carico magazzino"></td></tr>
-        </table>
-      </form>
-    </td>
-  </tr>
- <tr>          <td id=ricarica>
+ <td id=ricarica>
       <form name="input" action="amministrazione.php" method="post">
          <input type=hidden name="sql" value="nuova_ricarica"> 
         <table>
@@ -90,17 +64,9 @@ include "default.php";
         </table>
       </form>
     </td>
-        <td class=magazzino>
-      <form name="input" action="amministrazione.php" method="post">
-            <input type=hidden name="sql" value="nuovo_prezzo"> 
-        <table>
-          <tr><td class=magazzino> <?php echo $campoarticolo ?></td></tr>
-          <tr><td class=magazzino> prezzo </td class=magazzino><td><input class=text type=text name="prezzo"  size=7></td>
-          <td><input type="submit" value="Nuovo prezzo"></td></tr>
-        </table>
-      </form>
-    </td>
 
+  </tr>
+ <tr>         
   </tr>
  <tr>      
 
