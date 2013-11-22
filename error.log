@@ -24029,3 +24029,7 @@
 2013-11-21 12:51:07: (mod_fastcgi.c.2673) FastCGI-stderr: PHP Notice:  Undefined offset: 94 in /srv/http/vendita.php on line 22
 2013-11-21 12:51:07: (mod_fastcgi.c.2673) FastCGI-stderr: PHP Notice:  Undefined offset: 95 in /srv/http/vendita.php on line 21
 2013-11-21 12:51:07: (mod_fastcgi.c.2673) FastCGI-stderr: PHP Notice:  Undefined offset: 95 in /srv/http/vendita.php on line 22
+2013-11-22 09:02:07: (log.c.166) server started 
+2013-11-22 12:17:49: (server.c.1430) [note] graceful shutdown started 
+2013-11-22 12:17:49: (server.c.1546) server stopped by UID = 0 PID = 215 
+2013-11-22 12:18:27: (log.c.166) server started 
