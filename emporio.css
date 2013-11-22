@@ -4,18 +4,18 @@ html, body {
   height:100%;
   margin:0;
   padding:0;
-  font-size:14px;
-  color:#666;
+  font-size:12px;
+  color:#444;
 }
 header {
-  margin:5px;
-  padding:5px;
-  height: 5em;
+  margin:2px;
+  padding:2px;
   background-color: #aaf;
   color:#ffa;
   position:relative;
   z-index:1;
-  border-radius:4px;
+  border-radius:2px;
+  box-shadow:2px 2px 2px #888888;;
 }
 #nav {
   background : #aaf;
@@ -28,32 +28,42 @@ header {
 	}
 .content {
   margin:20px 20px 20px 20px;
-  background:white;
+  background:#eee;
   width:auto;
   position:relative;
   overflow:auto;
+  border-radius:2px;
+  box-shadow:2px 2px 2px #888888;;
 }
+.acquisto {	
+  margin:20px 20px 20px 20px;
+  background:#aaa;
+  border-radius:2px;
+  box-shadow:2px 2px 2px #888888;;
+  }
 #report{
   margin-top: 20px;
   background: #eee;
 
   }
  footer {
-  margin:5px;
+  margin:2px;
   height: auto;
   background-color: #aaf;
   color:#ffa;
-  padding-top:5px ;
-  padding-bottom:5px;
+  padding-top:2px ;
+  padding-bottom:2px;
   padding-left:50px;
   font-size:1em;
    z-index:1;
    background-color:#faf;
+  border-radius:2px;
+  box-shadow:2px 2px 2px #888888;;
 }
 .CSSTableGenerator {
 margin:0px;padding:0px;
-width:100%;	
-border-radius:4px;
+border-radius:2px;
+  box-shadow:2px 2px 2px #888888;
 }
 td {
 	vertical-align:bottom
@@ -66,29 +76,28 @@ background-color:#aad4dd;
 vertical-align:top;
 font-weight:normal;
 background-color:#aad4ff;
-border-radius:4px;
+border-radius:2px;
   }
 .CSSTableGenerator th{
 vertical-align:top;
 background-color:#aad4aa;
 font-weight:normal;
-border-radius:4px;
+border-radius:2px;
 }
 
 .GT {
 margin:0px;padding:0px;
-width:100%;	
-border-radius:4px;
+border-radius:2px;
 }
 .GT td{
 vertical-align:top;
 font-weight:normal;
-border-radius:4px;
+border-radius:2px;
   }
 .GT th{
 vertical-align:top;
 font-weight:normal;
-border-radius:4px;
+border-radius:2px;
 }
 
 input.text 
@@ -99,10 +108,10 @@ input.text
 
 
 select {
-	margin:5px;
+	margin:2px;
 	margin-left:50px;
 	height:1.6em;
-	color:#666;
+	color:#444;
 	}
 	
 input.selezioni 
@@ -120,13 +129,13 @@ input.selezioni:hover
 
 input:hover
 {
-    color: #666;
+    color: #444;
     background-color: #dee;
 }
 
 input
 {
-    color: #666;
+    color: #444;
     background-color: #cdd;
 }
 
@@ -138,37 +147,43 @@ input
     width : auto%;
     font-weight: none;
     border:1px solid #999;
-    border-radius:5px;
-    box-shadow:1px 1px 3px;
+    border-radius:2px;
+    box-shadow:1px 1px 2px;
 }
 
 
 .magazzino {
 	background-color:#aad4dd;
+  box-shadow:2px 2px 2px #888888;
 	}
 #ricarica {
 	background-color:#fda;
+  box-shadow:2px 2px 2px #888888;
 	}
 .utente {
 	background-color:#adf;
+  box-shadow:2px 2px 2px #888888;
 	}
 .transaction {
 	background-color:#f77;
+  box-shadow:2px 2px 2px #888888;
 	}
 td.transaction {
-	padding:4px;
-	padding-left:10px;
+	padding:2px;
+	padding-left:2px;
 	}
 .cassa {
-	background-color:#faa;
+	background-color:#ccd;
 	font-weight:bold;
 	font-size:1.1em;
+  box-shadow:2px 2px 2px #888888;
+	height:10%;
 	}
 #acquistoselezionato { 
 	width :  100%;
-	padding:10px;
+	padding:2px;
 	font-weight:bold;
-	border-radius:5px;
+	border-radius:2px;
 	font-size:1.5em;
 	}
 	
@@ -176,4 +191,19 @@ td.transaction {
 #moltiplicatore input{
 	background-color:#ad9;
 	}
-	
+
+.header {
+	  background-color: #abf;	
+box-shadow:2px 2px 2px #888888;
+	border-radius:2px;
+	}
+#error { 
+	width : 30%;
+	padding:20px;
+	margin:2px;
+	background-color:#faa;
+	font-weight:bold;
+	border-radius:2px;
+	font-size:2.5em;
+	}
+

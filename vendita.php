@@ -1,8 +1,6 @@
-<table class=GT>
-<tr>
-<td>
-<form  action="cassa.php" method="POST">
-<table class=CSSTableGenerator style="width:100%">
+<td rowspan=2>
+ <form  action="cassa.php" method="POST">
+<table class=CSSTableGenerator >
 <?php
 $rq = "SELECT * FROM prezzi order by prezzo";
 $trs = $db -> query($rq) -> fetchAll(PDO::FETCH_ASSOC);
@@ -24,9 +22,9 @@ for ($i = 0; $i < 4; $i++) {
 </table>
 </form>
 
-</td><td>
+</td><td  rowspan=2>
 <form  action="cassa.php" method="POST">
-<table class=CSSTableGenerator style="width:100%">
+<table class=CSSTableGenerator >
 <?php
 $rq = "SELECT * FROM prezzi order by prezzo";
 $trs = $db -> query($rq) -> fetchAll(PDO::FETCH_ASSOC);
@@ -45,4 +43,4 @@ for ($i = 0; $i < 5; $i++) {
 ?>
 </table>
 </form>
-</td></tr></table>
+</td>

@@ -32,41 +32,28 @@ if ($access) {
 	include "transact.php";
 	foreach($_POST as $k => $v) $_SESSION[$k]=$v;
 }	
-?>  
- <header>
-	<table>
-	<tr>
-	<td>
+?>   
+<header>
 	<div id=nav >
-		<ul><li>
-			<a href=index.php> Home </a>
-			</li><li>
-			<a href=cassa.php> Cassa </a>
-			</li><li>
-			<a href=amministrazione.php> Amministrazione</a>
-			</li><li>
-		</ul>
-	</div>
-	</td>
-	<td>	
-	<?php if (! $access): ?> 
-	<div id=login>	
 		<form name="input" action="amministrazione.php" method="post">
-			<input class=text type=password name="login" size=25>
+		<ul><li class=header>
+			<a href=index.php> Home </a>
+			</li><li class=header>
+			<a href=cassa.php>Cassa</a>
+			</li><li>
+	<?php if (! $access): ?> 
+			<input class=text type=password name="login" size=25></li><li>
 			<input type="submit" value="Login">
-		</form>   
-	</div>
 	<?php else: ?>
 	
-		<form name="input" action="amministrazione.php" method="post">
-		        <input type=hidden name="logout" value=1>
+		        <input type=hidden name="logout" value=1></li><li>
 			<input type="submit" value="Logout">
-		</form> 
 	<?php endif; ?>
-	</td>
-	</tr>
-	</table>
+		</li></ul>
+		</form>   
+	</div>
 </header>
+
  
 
 

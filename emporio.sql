@@ -241,4 +241,4 @@ create view scontrino as select acquisti.acquisto ,spese.prezzo,count(*) as nume
 
  
 
-	
+create view totali as SELECT acquisto,utente,sum(valore) as valore,apertura FROM scontrino join acquisti  using (acquisto) group by acquisto;
