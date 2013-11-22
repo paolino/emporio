@@ -70,7 +70,7 @@ include "cassaquery.php";
 		<input type=hidden name="sql" value="chiusura_acquisto"> 
 		<table>
 
-		<tr><td class=cassa> PIN </td><td class=cassa><input class=text type=password name="pin"  size=5 ></td>
+		<tr><td> PIN </td><td class=cassa><input class=text type=password name="pin"  size=5 ></td>
 		<td><input type="submit" value="Chiusura"></td></tr>
 		</table>
 		</form>

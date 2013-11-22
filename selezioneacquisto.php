@@ -1,4 +1,4 @@
-<table class=CSSTableGenerator >   
+<table  >   
 
 <?php   
 if(!$access){
