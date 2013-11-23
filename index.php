@@ -14,26 +14,32 @@
 </head>
 <BODY>
 
+<?php
+session_start();
+include "access.php";
+?>
+ <header>
+	<div id=nav >
+		<form name="input" action="index.php" method="post">
+		<ul><li class=header>
+			<a href=cassa.php> Cassa </a>
+			</li><li class=header>
+			<a href=amministrazione.php> Amministrazione</a>
+			</li><li>
+	<?php if (! $access): ?> 
+			<input class=text type=password name="login" size=25></li><li>
+			<input type="submit" value="Login">
+	<?php else: ?>
+	
+		        <input type=hidden name="logout" value=1></li><li>
+			<input type="submit" value="Logout">
+	<?php endif; ?>
+		</li></ul>
+		</form>   
+	</div>
+</header>
 
  
-  <header>
-  
-  <div id=nav>
-	<ul>
-			<li>
-		<a href=index.php> Emporio solidale val taro </a>
-	</li>
-
-	<li>
-		<a href=cassa.php> Cassa </a>
-	</li>
-		<li>
-		<a href=amministrazione.php> Amministrazione</a>
-		</li>
-		</ul>
-	</div>
-
-  </header>
     <div class=content>
 <img src="solidarieta.gif"></img>
 </div>

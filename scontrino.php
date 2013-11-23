@@ -1,7 +1,7 @@
 <?php
-        $rq = "SELECT prezzo,numero,valore FROM scontrino where acquisto={$_SESSION['acquisto']} order by prezzo";
+        $rq = "SELECT prezzo,numero FROM scontrino where acquisto={$_SESSION['acquisto']} order by prezzo";
         $trs = $db -> query($rq) -> fetchAll(PDO::FETCH_ASSOC);
-        $tks=array("prezzo","numero","valore");
+        $tks=array("prezzo","confezioni");
 ?>
 
 <table class=CSSTableGenerator>   

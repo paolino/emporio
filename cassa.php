@@ -6,6 +6,7 @@
 <TITLE>Emporio</TITLE>
 <link href="emporio.css" rel="stylesheet" type="text/css">
 
+<link rel="icon" href="favicon.png?v=1">
 <link rel="stylesheet" href="/jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
 <script src="jquery-ui-1.10.3/jquery-1.9.1.js"></script>
 </head>
@@ -57,67 +58,104 @@ include "cassaquery.php";
 <div class=content>
 
 <table class = GT>
-<tr>
-<td>
-<?php include "cassaforms.php";?>
-<?php if ( $_SESSION['acquisto']!=""): ?>
- 
-<div class=acquisto>
-
+<tr><td>
 <table class = GT>
-<tr>		<td class=cassa>
-		<form name="input" action="cassa.php" method="post">
-		<input type=hidden name="sql" value="chiusura_acquisto"> 
-		<table>
+<tr>
+	<td>
+	<?php include "cassaforms.php";?>
+	</td>
+</tr>
+<tr> <td>
 
-		<tr><td> PIN </td><td class=cassa><input class=text type=password name="pin"  size=5 ></td>
-		<td><input type="submit" value="Chiusura"></td></tr>
-		</table>
-		</form>
+	<?php if ( $_SESSION['acquisto']!=""): ?>
+ 	<table class = asc> <tr>
+	<td>
+
+	<div class=acquisto>
+	<table class = GT>
+	<tr>		<td class=cassa>
+			<form name="input" action="cassa.php" method="post">
+			<input type=hidden name="sql" value="chiusura_acquisto"> 
+			<table>
+
+			<tr><td> PIN </td><td class=cassa><input class=text type=password name="pin"  size=5 ></td>
+			<td><input type="submit" value="Chiusura"></td></tr>
+			</table>
+			</form>
+			</td>
+
+		<?php include "vendita.php"?>
+
+	</tr>
+	<tr>
+		<td rowspan=1>
+			<table class = GT>
+			<tr><td class = info>Utente</td>
+				<td class = info><?php echo $_SESSION['utenteacquisto']?></td>
+				</tr>
+		<?php if($access && $_SESSION['acquisto']!="" ): ?>
+		<?php 
+				$q="select nominativo,punti from utenti where utente={$_SESSION['utenteacquisto']}";
+				$acs = $db -> query($q) -> fetchAll(PDO::FETCH_ASSOC);
+			?>
+
+			<tr><td class = info>Nominativo</td>
+			<td class=info> <?php print_r ($acs[0]['nominativo']);	?>
+			</td></tr>
+			<tr><td class = info>Punti</td>
+			<td class=info> <?php print_r ($acs[0]['punti']);?></td></tr>
+		<?php endif; ?>
+
+			<tr>
+			<td class = info>Credito</td>
+			<td class = info><?php 
+				$q="select residuo from utenti where utente={$_SESSION['utenteacquisto']}";
+				$acs = $db -> query($q) -> fetchAll(PDO::FETCH_ASSOC);
+				print_r ($acs[0]['residuo']);
+			?>
+			</td></tr>
+
+			<tr>
+			<td class = info>Spesa</td>
+			<td class = info><?php 
+				$q="select valore from totali where acquisto={$_SESSION['acquisto']}";
+				$acs = $db -> query($q) -> fetchAll(PDO::FETCH_ASSOC);
+				print_r ($acs[0]['valore']);
+			?>
+			</td></tr>
+			</table>
+
+		</td>	
+	</tr>
+	<tr>
+			<td class=cassa>
+			<form name="input" action="cassa.php" method="post">
+			<input type=hidden name="sql" value="fallimento_acquisto"> 
+			<table>
+			<tr>
+			<td><input type="submit" value="Fallimento"></td></tr>
+			</table>
+			</form>
 		</td>
+	</tr>
 
-	<td rowspan=3>
-	<?php  include "scontrino.php"?>
+	</table>
+	</div>
 	</td>
-	<?php include "vendita.php"?>
-
-</tr>
-<tr>
-	<td rowspan=1><div id=acquistoselezionato>
-
-		<table class = GT><tr><td class = cassa>Utente</td>
-			<td class = cassa><?php echo $_SESSION['utenteacquisto']?></td>
-			</tr>
-		<td class = cassa>Credito</td>
-		<td class = cassa><?php 
-			$q="select residuo from utenti where utente={$_SESSION['utenteacquisto']}";
-			$acs = $db -> query($q) -> fetchAll(PDO::FETCH_ASSOC);
-			print_r ($acs[0]['residuo']);
-		?>
-		</td></tr></table>
-
-	</td>	
-</tr>
-<tr>
-		<td class=cassa>
-		<form name="input" action="cassa.php" method="post">
-		<input type=hidden name="sql" value="fallimento_acquisto"> 
-		<table>
-
-		<td><input type="submit" value="Fallimento"></td></tr>
-		</table>
-		</form>
-	</td>
-
-</tr>
-
-</table>
-</div>
+	
+	<td><table class=acquisto><tr><td class=cassa>Scontrino</td></tr><tr><td><?php  include "scontrino.php"?></td></tr></table>
+	
+	</tr></table>
+	
 <?php endif;?>
+	
 </td>
-<td> <?php  include "totale.php"?></td>
+	
+
 </tr>
 </table>
+<td> <div class=asc> <table><tr><td class=cassa>Ultimi acquisti</td></tr><tr><td> <?php  include "totale.php"?></td></tr></table></div></td>
+</tr></table>
 </div>
 <?php if($_SESSION['error']): ?>
 <div id=error>
@@ -126,9 +164,10 @@ include "cassaquery.php";
 ?>
 </div>
 <?php endif;?>
-
 <footer>
-Logic and design: paolo.veronelli@gmail.com
+<div id=footer>
+Open sourced at <a href="http://github.com/paolino/emporio">github</a>
+</div>
 </footer>
 
 </BODY>
