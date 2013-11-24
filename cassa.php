@@ -9,9 +9,10 @@
 <link rel="icon" href="favicon.png?v=1">
 <link rel="stylesheet" href="/jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
 <script src="jquery-ui-1.10.3/jquery-1.9.1.js"></script>
+<script src="jquery-ui-1.10.3/ui/jquery-ui.js"></script>
+
 </head>
 <BODY >
-
 
 
 
@@ -64,6 +65,7 @@ include "cassaquery.php";
 	<td>
 	<?php include "cassaforms.php";?>
 	</td>
+		<?php include "vendita.php"?>
 </tr>
 <tr> <td>
 
@@ -79,17 +81,17 @@ include "cassaquery.php";
 			<table>
 
 			<tr><td> PIN </td><td class=cassa><input class=text type=password name="pin"  size=5 ></td>
-			<td><input type="submit" value="Chiusura"></td></tr>
+			<td><input id=chiusura type="submit" value="Chiusura"></td></tr>
 			</table>
 			</form>
 			</td>
 
-		<?php include "vendita.php"?>
 
 	</tr>
 	<tr>
 		<td rowspan=1>
-			<table class = GT>
+			<table class = asc>
+			<tbody >
 			<tr><td class = info>Utente</td>
 				<td class = info><?php echo $_SESSION['utenteacquisto']?></td>
 				</tr>
@@ -117,15 +119,28 @@ include "cassaquery.php";
 
 			<tr>
 			<td class = info>Spesa</td>
-			<td class = info><?php 
-				$q="select valore from totali where acquisto={$_SESSION['acquisto']}";
+			<td class = info>
+			<?php 
+				$q="select valore,numero from totali where acquisto={$_SESSION['acquisto']}";
 				$acs = $db -> query($q) -> fetchAll(PDO::FETCH_ASSOC);
-				print_r ($acs[0]['valore']);
+				if ($acs)
+					print_r ($acs[0]['valore']);
+				else echo "0";
 			?>
 			</td></tr>
+			<tr>
+			<td class = info>Confezioni</td>
+			<td class = info>
+			<?php 	if ($acs) 
+					print_r ($acs[0]['numero']);
+				else echo "0";
+			?>
+			</td></tr>
+
+			</tbody>
 			</table>
 
-		</td>	
+		</td>
 	</tr>
 	<tr>
 			<td class=cassa>
@@ -133,16 +148,16 @@ include "cassaquery.php";
 			<input type=hidden name="sql" value="fallimento_acquisto"> 
 			<table>
 			<tr>
-			<td><input type="submit" value="Fallimento"></td></tr>
+			<td><input id=fallimento type="submit" value="Fallimento"></td></tr>
 			</table>
 			</form>
 		</td>
+		
 	</tr>
 
 	</table>
 	</div>
 	</td>
-	
 	<td><table class=acquisto><tr><td class=cassa>Scontrino</td></tr><tr><td><?php  include "scontrino.php"?></td></tr></table>
 	
 	</tr></table>
@@ -150,7 +165,8 @@ include "cassaquery.php";
 <?php endif;?>
 	
 </td>
-	
+		
+
 
 </tr>
 </table>

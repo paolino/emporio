@@ -16,11 +16,19 @@ switch($_POST['sql']) {
 			 ,{$_POST['residuo']}
 			);";
 		break;
-	case  "nuovo_articolo":
+	case  "nuovo_prezzo":
 		$descrizione = removeprob($_POST['descrizione']);
 		$q="insert into prezzi values 
 			(
 			 '{$descrizione}'
+			);";
+		break;
+	case  "nuovo_articolo":
+		$descrizione = removeprob($_POST['descrizione']);
+		$q="insert into prodotti values 
+			(
+			 '{$descrizione}',
+			{$_POST['valore']}
 			);";
 		break;
 	case "nuova_ricarica":

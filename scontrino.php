@@ -1,7 +1,7 @@
 <?php
-        $rq = "SELECT prezzo,numero FROM scontrino where acquisto={$_SESSION['acquisto']} order by prezzo";
+        $rq = "SELECT prezzo,prodotto,numero FROM scontrino where acquisto={$_SESSION['acquisto']} order by prezzo";
         $trs = $db -> query($rq) -> fetchAll(PDO::FETCH_ASSOC);
-        $tks=array("prezzo","confezioni");
+        $tks=array("prezzo","prodotto","confezioni");
 ?>
 
 <table class=CSSTableGenerator>   
@@ -20,7 +20,9 @@
                 echo '<tr>';
                 echo '<form action="cassa.php" method=POST>';  
                 echo "<td style=\"width: 50px\" > 
-                        <input type=\"hidden\" name=\"sql\" value=\"cancella_articolo\">
+                        <input type=\"hidden\" name=\"sql\" value=\"cancella_spesa\">
+			<input type=\"hidden\" name=\"prodotto\" value=\"{$q['prodotto']}\">
+
                         <input class=selezioni onClick=\"this.form.submit()\" type=submit name=prezzo value=\"" ;
                 print_r ($q['prezzo']); 
                 echo  ("\"></form> </td>") ; 

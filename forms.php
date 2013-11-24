@@ -35,14 +35,25 @@
     </td>
     <td class=magazzino>
       <form name="input" action="amministrazione.php" method="post">
-      <input type=hidden name="sql" value="nuovo_articolo"> 
+      <input type=hidden name="sql" value="nuovo_prezzo"> 
         <table >
-          <tr><td class=magazzino> valore </td><td class=magazzino><input class=text type=text name="descrizione"  size=30></td></tr>
+          <tr><td class=magazzino> valore </td><td class=magazzino><input class=text type=text name="descrizione"  size=7></td></tr>
 
           <tr><td class=magazzino></td><td class=magazzino><input class=magazzino type="submit" value="Nuovo prezzo"></td></tr>
         </table>
       </form>
+    </td>    
+   <td class=magazzino>
+      <form name="input" action="amministrazione.php" method="post">
+      <input type=hidden name="sql" value="nuovo_articolo"> 
+        <table >
+          <tr><td class=magazzino> nome </td><td class=magazzino><input class=text type=text name="descrizione"  size=20></td></tr>
+          <tr><td class=magazzino> valore </td><td class=magazzino><input class=text type=text name="valore"  size=20></td></tr>
+          <tr><td class=magazzino></td><td class=magazzino><input class=magazzino type="submit" value="Nuovo articolo"></td></tr>
+        </table>
+      </form>
     </td>
+
 
   </tr>
   <tr>

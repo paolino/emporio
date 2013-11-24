@@ -28,16 +28,23 @@ switch($_POST['sql']) {
 		$r=true;
 		break;
 	case "nuova_spesa":
-		$q = "insert into spese (acquisto,prezzo) values ({$_SESSION['acquisto']},{$_POST['prezzo']})";
 		if ($_SESSION['moltiplicatore']!=""){
 			$z=$_SESSION['moltiplicatore'];
-			unset ($_SESSION['moltiplicatore']);
-			
-			}
+			unset ($_SESSION['moltiplicatore']);			
+		}
+		if($_POST['nome']) $p = "\"{$_POST['nome']}\"";
+		else $p= 'null';
+		$q = "insert into spese (acquisto,prezzo,prodotto) values ({$_SESSION['acquisto']},{$_POST['prezzo']},{$p})";
 		$s="credito insufficiente";
 		break;
-	case "cancella_articolo":
-		$q = "insert into cancella (acquisto,prezzo) values ({$_SESSION['acquisto']},{$_POST['prezzo']})";
+	case "cancella_spesa":	
+		if ($_SESSION['moltiplicatore']!=""){
+			$z=$_SESSION['moltiplicatore'];
+			unset ($_SESSION['moltiplicatore']);			
+		}
+		if($_POST['prodotto']) $p = "\"{$_POST['prodotto']}\"";
+		else $p= 'null';
+		 $q = "insert into cancella (acquisto,prezzo,prodotto) values ({$_SESSION['acquisto']},{$_POST['prezzo']},{$p})";
 		break;
 	case "imposta_moltiplicatore":
 		$_SESSION['moltiplicatore'] = $_POST['moltiplicatore'];

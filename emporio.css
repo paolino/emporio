@@ -122,7 +122,7 @@ input.selezioni
 {
     color: #abb;
     background-color: #abb;
-
+    height:1em
 }
 input.selezioni:hover  
 {
@@ -216,5 +216,14 @@ box-shadow:2px 2px 2px #888888;
 	box-shadow:2px 2px 2px #888888;
 
 	font-size:2em;
+	}
+#fallimento {
+	background-color:#faa;
+	}
+#chiusura {
+	background-color:#afa;
+	}
+.molt {
+	background-color:#faa;
 	}
 
