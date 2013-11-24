@@ -44,10 +44,9 @@
       if($access) foreach ($trs as $k => $q) {
         echo '<tr>';
 
-        echo "<td style=\"width: 50px\" > <input onClick=\"this.form.submit()\" type=radio name=record value=\"" ;
+        echo "<td style=\"width: 50px\" > <input class=selezioni onClick=\"this.form.submit()\" type=submit name=record value=\"" ;
         print_r ($k); 
         echo  ("\"> </td>") ; 
-
         foreach ($q as $s){echo '<td>';print_r($s); echo '</td>';}
         echo '</tr>';
       }

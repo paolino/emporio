@@ -1,12 +1,5 @@
 <?php
 
-try {
-	$db = new PDO('sqlite:emporio4');  
-	$db-> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-	$db-> query("PRAGMA foreign_keys=on;");
-} catch(PDOException $e) 
-{echo "<script> alert('{$e->getMessage()}') </script>";}
-
 function removeprob($s){return str_replace("'", "", $s);}
 $r = false;
 $q="";

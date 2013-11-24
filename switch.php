@@ -15,7 +15,11 @@ switch($_POST['sql']) {
 			 ,'{$_POST['valutazione']}'
 			 ,{$_POST['residuo']}
 			);";
+		break;	
+	case  "eliminazione_prezzo":
+		$q="delete from prezzi where prezzo= ({$_POST['prezzo']});";
 		break;
+
 	case  "nuovo_prezzo":
 		$descrizione = removeprob($_POST['descrizione']);
 		$q="insert into prezzi values 

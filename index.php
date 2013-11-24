@@ -43,10 +43,7 @@ include "access.php";
     <div class=content>
 <img src="solidarieta.gif"></img>
 </div>
-<footer>
-Logic and design: paolo.veronelli@gmail.com
-</footer>
-
+<?php include "footer.html" ?>
 </BODY>
 </HTML>
 

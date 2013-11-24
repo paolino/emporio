@@ -3,8 +3,9 @@
 "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <HEAD>
-<TITLE>Emporio</TITLE>
+<TITLE>Emporio, amministrazione</TITLE>
 <link href="emporio.css" rel="stylesheet" type="text/css">
+<link rel="icon" href="favicon.png?v=1">
 
 <link rel="stylesheet" href="/jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
 <script src="jquery-ui-1.10.3/jquery-1.9.1.js"></script>
@@ -71,10 +72,7 @@ if ($access) {
 	?>
 
 </div> 
-<footer>
-	Logic and design: paolo.veronelli@gmail.com
-</footer>
-
+<?php include "footer.html" ?>
 
 </BODY>
 </HTML>

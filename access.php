@@ -2,7 +2,7 @@
 if($_POST['login'] != "")
 $_SESSION['login']=$_POST['login'];
 try {
-	$db = new PDO('sqlite:emporio4');  
+	$db = new PDO('sqlite:emporio.db');  
 	$db-> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 	$db-> query("PRAGMA foreign_keys=on;");
 } 

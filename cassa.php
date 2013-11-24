@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
 <HEAD>
-<TITLE>Emporio</TITLE>
+<TITLE>Emporio, cassa</TITLE>
 <link href="emporio.css" rel="stylesheet" type="text/css">
 
 <link rel="icon" href="favicon.png?v=1">
@@ -19,7 +19,6 @@
 <?php
 session_start();
 include "access.php";
-
 if($_POST['acquisto'] != ""){
 	$q = "select * from acquisti_aperti where acquisto = '{$_POST['acquisto']}'";
 	
@@ -80,7 +79,7 @@ include "cassaquery.php";
 			<input type=hidden name="sql" value="chiusura_acquisto"> 
 			<table>
 
-			<tr><td> PIN </td><td class=cassa><input class=text type=password name="pin"  size=5 ></td>
+			<tr><td> PIN </td><td ><input class=text type=password name="pin"  size=5 ></td>
 			<td><input id=chiusura type="submit" value="Chiusura"></td></tr>
 			</table>
 			</form>
@@ -180,12 +179,7 @@ include "cassaquery.php";
 ?>
 </div>
 <?php endif;?>
-<footer>
-<div id=footer>
-Open sourced at <a href="http://github.com/paolino/emporio">github</a>
-</div>
-</footer>
-
+<?php include "footer.html" ?>
 </BODY>
 </HTML>
 
