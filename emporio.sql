@@ -99,9 +99,6 @@ CREATE TABLE spese (
     prodotto text
 );
 CREATE VIEW cancella as select acquisto,prezzo,prodotto from spese;
-CREATE VIEW scontrino as select acquisti.acquisto ,spese.prezzo,prodotto,count(*) as numero,count(*) * prezzo as valore from
-   acquisti join spese on
-     (acquisti.acquisto = spese.acquisto) group by spese.prezzo,spese.acquisto;
 CREATE TRIGGER cancella instead of insert on cancella when ((select spesa from spese where prezzo = new.prezzo and acquisto = new.acquisto and ((prodotto isnull and new.prodotto isnull) or new.prodotto = prodotto)) notnull) begin
 delete from spese where  spesa = (select spesa from spese where prezzo = new.prezzo and acquisto = new.acquisto and  ((prodotto isnull and new.prodotto isnull) or new.prodotto = prodotto) limit 1);
  update utenti set residuo = round(residuo + new.prezzo,2) where utente = (select utente from acquisti_aperti where acquisto = new.acquisto);
@@ -116,4 +113,8 @@ end;
 CREATE INDEX aquisto_of_spese on spese (acquisto);
 CREATE TABLE prodotti (nome text primary key not null, prezzo double not null check (prezzo > 0));
 CREATE VIEW totali as SELECT acquisto,utente,sum(valore) as valore,sum (numero) as numero , apertura FROM scontrino join acquisti  using (acquisto) group by acquisto;
-
+CREATE VIEW r as select acquisti.acquisto ,spese.prezzo,prodotto,count(*) as numero,count(*) * prezzo as valore from
+   acquisti join spese on
+     (acquisti.acquisto = spese.acquisto) group by spese.prezzo,spese.acquisto,spese.prodotto;
+CREATE VIEW scontrino as select acquisti.acquisto ,spese.prezzo,prodotto,count(*) as numero,count(*) * prezzo as valore from acquisti join spese on
+(acquisti.acquisto = spese.acquisto) group by spese.prezzo,spese.acquisto,spese.prodotto;
