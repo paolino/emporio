@@ -89,16 +89,16 @@ include "cassaquery.php";
 	</tr>
 	<tr>
 		<td rowspan=1>
-			<table class = asc>
-			<tbody >
-			<tr><td class = info>Utente</td>
-				<td class = info><?php echo $_SESSION['utenteacquisto']?></td>
-				</tr>
-		<?php if($access && $_SESSION['acquisto']!="" ): ?>
 		<?php 
-				$q="select nominativo,punti from utenti where utente={$_SESSION['utenteacquisto']}";
+				$q="select * from utenti where utente={$_SESSION['utenteacquisto']}";
 				$acs = $db -> query($q) -> fetchAll(PDO::FETCH_ASSOC);
 			?>
+			<table class = asc>
+			<tbody >
+			<tr><td class = info>Tessera</td>
+				<td class = info><?php echo "{$acs[0]['colloquio']}/{$acs[0]['utente']}"?></td>
+				</tr>
+		<?php if($access && $_SESSION['acquisto']!="" ): ?>
 
 			<tr><td class = info>Nominativo</td>
 			<td class=info> <?php print_r ($acs[0]['nominativo']);	?>
@@ -110,8 +110,6 @@ include "cassaquery.php";
 			<tr>
 			<td class = info>Credito</td>
 			<td class = info><?php 
-				$q="select residuo from utenti where utente={$_SESSION['utenteacquisto']}";
-				$acs = $db -> query($q) -> fetchAll(PDO::FETCH_ASSOC);
 				print_r ($acs[0]['residuo']);
 			?>
 			</td></tr>

@@ -1,14 +1,7 @@
 <table  >   
 
 <?php   
-if(!$access){
-	$rq = "SELECT acquisto,utente FROM acquisti_aperti join utenti using(utente)";
-	$tks= array("selezione","utente","fallimento");
-	}
-else {
-	$rq = "SELECT acquisto,utente,nominativo,punti,residuo FROM acquisti_aperti join utenti using(utente)";
-	$tks= array("selezione","utente","nominativo","punti","residuo","fallimento");
-	}
+	$rq = "SELECT acquisto,utente,colloquio FROM acquisti_aperti join utenti using(utente)";
 
 $trs = $db -> query($rq) -> fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -20,7 +13,7 @@ foreach ($trs as $k => $q) {
 		<form name=input action=\"cassa.php\" method=POST>
 			<input type = hidden name= acquisto value={$q['acquisto']}>
 			<input class onClick=\"this.form.submit()\" type=submit  value=\"" ;
-	echo $q['utente']; 
+	echo "{$q['colloquio']}/{$q['utente']}"; 
 	echo  ("\"></form></td>") ; 
 
 }

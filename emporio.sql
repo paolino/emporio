@@ -57,13 +57,6 @@ CREATE TABLE acquisti (
     apertura TEXT    NOT NULL
                      DEFAULT CURRENT_TIMESTAMP
     );
-create view nuovoacquisto as select colloquio,utente from utenti;
-
-create trigger nuovoacquisto instead of insert on nuovoacquisto begin
-        select case when ((select utente from utenti where utente = new.utente and colloquio = new.colloquio) isnull) then raise (abort,"utente sconosciuto") end;
-        insert into acquisti (utente) values (new.utente);
-        end;
-        
 CREATE TABLE chiusure (
 	acquisto integer not null unique references acquisti  ON DELETE CASCADE,
 	chiusura NOT NULL
