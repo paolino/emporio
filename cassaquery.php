@@ -8,7 +8,7 @@ $s="";
 switch($_POST['sql']) {
 
 	case "nuovo_acquisto":
-		$q="insert into acquisti (utente) values ({$_POST['utente']})";
+		$q="insert into nuovoacquisto (colloquio,utente) values ({$_POST['colloquio']},{$_POST['utente']})";
 		$s="utente inesistente o acquisto gia' aperto";
 		break;
 	case "chiusura_acquisto":
@@ -45,6 +45,7 @@ switch($_POST['sql']) {
 	default:
 		
 }
+echo $q;
 unset($_POST['sql']);
 for ($i = 0; $i < $z; $i ++)
 try {$db->query($q);} catch(PDOException $e) {

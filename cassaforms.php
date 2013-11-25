@@ -4,7 +4,8 @@
 	<form name="input" action="cassa.php" method="post">
 	<input type=hidden name="sql" value="nuovo_acquisto"> 
 	<table>
-	<tr><td > Utente </td><td > <input class=text type=text name="utente"  size=5 ></td>
+	<tr><td > Tessera </td><td > <input class=text type=text name="colloquio"  size=5 ></td>
+	<td >/<input class=text type=text name="utente"  size=5 ></td>
 	<td ><input type="submit" value="Apertura"></td></tr>
 	</table>
 	</form>
