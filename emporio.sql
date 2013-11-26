@@ -57,6 +57,7 @@ CREATE TABLE acquisti (
     apertura TEXT    NOT NULL
                      DEFAULT CURRENT_TIMESTAMP
     );
+CREATE VIEW nuovoacquisto as select colloquio,utente from utenti;
 CREATE TABLE chiusure (
 	acquisto integer not null unique references acquisti  ON DELETE CASCADE,
 	chiusura NOT NULL
@@ -118,3 +119,7 @@ CREATE VIEW totali as SELECT acquisto,utente,sum(valore) as valore,sum (numero) 
 CREATE VIEW r as select acquisti.acquisto ,spese.prezzo,prodotto,count(*) as numero,count(*) * prezzo as valore from
    acquisti join spese on
      (acquisti.acquisto = spese.acquisto) group by spese.prezzo,spese.acquisto,spese.prodotto;
+CREATE TRIGGER nuovoacquisto instead of insert on nuovoacquisto begin
+        select case when ((select utente from utenti where utente = new.utente and colloquio = new.colloquio) isnull) then raise (abort,"utente sconosciuto") end;
+        insert into acquisti (utente) values (new.utente);
+        end;
