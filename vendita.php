@@ -59,7 +59,7 @@ for ($i = 0; $i < 9; $i++) {
 	echo '<tr>';
 	for ($j = 0; $j < 3; $j++) {
 		echo '<td>';
-		$v= $trs[$j*10 + snake($j,9,$i)]['prezzo'];
+		$v= $trs[$j*9 + snake($j,9,$i)]['prezzo'];
 		echo "<input class=merce style=\"width:100%\" type=submit name=\"prezzo\" value=\"{$v}\">";
 		echo "<input type=hidden name=\"sql\" value=\"nuova_spesa\">";
 		echo '</td>';
