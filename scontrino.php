@@ -19,7 +19,7 @@
         foreach ($trs as $k => $q) {
                 echo '<tr>';
                 echo '<form action="cassa.php" method=POST>';  
-                echo "<td style=\"width: 50px\" > 
+                echo "<td style=\"width:1em\" > 
                         <input type=\"hidden\" name=\"sql\" value=\"cancella_spesa\">
 			<input type=\"hidden\" name=\"prodotto\" value=\"{$q['prodotto']}\">
 
