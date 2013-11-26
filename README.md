@@ -1,7 +1,5 @@
 emporio
 =======
-Heading
-=======
 
 Software in italiano per la gestione semplificata di un emporio solidale con tessere a punti.
 ------------------------------------------------------
