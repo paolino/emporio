@@ -10,6 +10,8 @@ Non compendia la gestione del magazzino.
 L'interfaccia è suddivisa in 2 pagine, una per l'amministrazione con gestione transazionale delle oprazioni e un'altra per 
 il funzionamento della cassa.
 Gli utenti sono responsabili della loro identità tramite introduzione del loro PIN alla cassa.
+La cassa prevede la gestione parallela degli utenti durante l'acquisto e prevede persistenza spesa per spesa, storno e 
+fallimento esplicito.
 
 Installazione:
 ----------------
