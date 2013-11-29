@@ -55,7 +55,7 @@ Installazione:
  
 Installazione (archlinux):
 -------
-  [Link](https://github.com/paolino/emporio/wiki)
+  [Link](https://github.com/paolino/emporio/wiki/Installazione-arch-linux)
 
 Caveat:
 ---------
