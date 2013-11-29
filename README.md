@@ -53,7 +53,10 @@ Installazione:
 
  * visitare http://127.0.0.1/index.php
  
- 
+Installazione (archlinux):
+-------
+  [Link](https://github.com/paolino/emporio/wiki)
+
 Caveat:
 ---------
 
