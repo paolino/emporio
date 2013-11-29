@@ -1,5 +1,5 @@
 <div id=report>
-     <form action="amministrazione.php" type="submit" method="POST">
+     <form action=<?php echo "{$_SESSION['page']}" ?> type="submit" method="POST">
 
 				<select onChange=this.form.submit() name="tabella">  
 					<?php   

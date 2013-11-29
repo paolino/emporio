@@ -25,6 +25,7 @@ $(function() {
 
 <?php
 session_start();
+$_SESSION['page'] = "amministrazione.php";
 
 include "access.php";
 
@@ -41,6 +42,8 @@ if ($access) {
 			<a href=index.php> Home </a>
 			</li><li class=header>
 			<a href=cassa.php>Cassa</a>
+			</li><li class=header>
+			<a href=articoli.php>Articoli</a>
 			</li><li>
 	<?php if (! $access): ?> 
 			<input class=text type=password name="login" size=25></li><li>
