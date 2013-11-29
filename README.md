@@ -2,23 +2,40 @@ emporio
 =======
 
 Software in italiano per la gestione semplificata di un emporio solidale con tessere a punti.
-------------------------------------------------------
+---------
 
 Questo codice prevede un interfaccia web ad un database (sqlite) contenente le informazioni sugli utenti, le loro tessere 
 e le loro spese.
+
 Non compendia la gestione del magazzino.
+
 L'interfaccia è suddivisa in 2 pagine, una per l'amministrazione con gestione transazionale delle oprazioni e un'altra per 
 il funzionamento della cassa.
+
 Gli utenti sono responsabili della loro identità tramite introduzione del loro PIN alla cassa.
+
 La cassa prevede la gestione parallela degli utenti durante l'acquisto e prevede persistenza spesa per spesa, storno e 
 fallimento esplicito.
 
+
+Caratteristiche:
+-------------
+
+	* Interfaccia web: l'interfaccia web permette di accedere da un browser qualsiasi, permettendo l'utilizzo di pad in maniera naturale.
+
+ * Servizio php: qualsiasi server in rete locale è in grado di fornire il servizio
+
+ * Utilizzo estensivo di sqlite: correttezza impostata a livello di sistema, backup semplificato ad un file
+
+ * Minimalismo: software indicato per empori semplici, rinunciando al carico magazzino e bar coding
+
 Installazione:
 ----------------
+
  * abilitare il server http al servizio di pagine php con accesso pdo a sqlite 
    (pacchetti 'lighttpd' 'php' 'php-pdo' 'php-cgi')
 
- * copiare tutti i php nella directory di servizio (/srv/http per arch, /var/www per ubuntu)
+ * copiare tutta la repository nella cartella di servizio (/srv/http per arch, /var/www per ubuntu)
 
  * creare il database con 
 
@@ -35,16 +52,14 @@ Installazione:
   chown www-data emporio.db
 
  * visitare http://127.0.0.1/index.php
- * 
  
  
 Caveat:
 ---------
 
-Il software è parzialmente dedicato ad una situazione particolare dove gli utenti sono identificati da 2 numeri univoci, 
-detti colloquio e utente che portano con se sulla tessera e presentano in cassa. Ovviamente la cosa presenta solo svantaggi
-
+Il software è parzialmente dedicato ad una situazione particolare (Borgo val di Taro) dove gli utenti sono identificati da 2 numeri univoci, 
+detti colloquio e utente che portano con se sulla tessera e presentano in cassa. 
 
 Attualmente è possibile scaricare copia del database all'indirizzo locale *emporio.db* il che presenta una falla nella 
-gestione della privacy.
+gestione della privacy. E' possibile migliorare con una cifratura del database.
 
