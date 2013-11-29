@@ -21,7 +21,7 @@ fallimento esplicito.
 Caratteristiche:
 -------------
 
-	* Interfaccia web: l'interfaccia web permette di accedere da un browser qualsiasi, permettendo l'utilizzo di pad in maniera naturale.
+ * Interfaccia web: l'interfaccia web permette di accedere da un browser qualsiasi, permettendo l'utilizzo di pad in maniera naturale.
 
  * Servizio php: qualsiasi server in rete locale è in grado di fornire il servizio
 
