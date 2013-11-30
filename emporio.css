@@ -6,6 +6,8 @@ html, body {
   padding:0;
   font-size:12px;
   color:#444;
+  background-image:linear-gradient(to right bottom, #fff 0%, #ddd 100%);
+
 }
 header {
   margin:2px;
@@ -16,19 +18,20 @@ header {
   z-index:1;
   border-radius:2px;
   box-shadow:2px 2px 2px #888888;;
+  background-image:linear-gradient(to right bottom, #fff 0%, #aaa 100%);
 }
-#nav {
-  }
 #nav ul li {
 	display:inline;
 	margin-left:30px;	
 	color:#f23;
-	font-size:1.5em;
+	font-size:1.2em;
 	font-weight:bold;
+  	background-image:linear-gradient(to right bottom, #fff 0%, #ffc 100%);
 	}
 .content {
   margin:20px 20px 20px 20px;
   background:#bbc;
+  background-image:linear-gradient(to right bottom, #555 0%, #666 100%);
   width:auto;
   position:relative;
   overflow:auto;
@@ -40,17 +43,20 @@ header {
   background:#776;
   border-radius:2px;
   box-shadow:2px 2px 2px #888888;;
+  background-image:linear-gradient(to right bottom, #555 0%, #666 100%);
   }
 .asc {	
   margin:5px 5px 5px 5px;
   background:#998;
   border-radius:2px;
   box-shadow:2px 2px 2px #888888;;
+  background-image:linear-gradient(to right bottom, #585 0%, #6a6 100%);
   }
 
 #report{
   margin-top: 20px;
   background: #eee;
+  background-image:linear-gradient(to right bottom, #555 0%, #666 100%);
 
   }
  footer {
@@ -64,6 +70,7 @@ header {
    background-color:#faf;
   border-radius:2px;
   box-shadow:2px 2px 2px #888888;;
+  background-image:linear-gradient(to right bottom, #aaa 0%, #666 100%);
 }
 .CSSTableGenerator {
 margin:0px;padding:0px;
@@ -185,8 +192,9 @@ td.transaction {
 	background-color:#ccd;
 	font-weight:bold;
 	font-size:1.1em;
-  box-shadow:2px 2px 2px #888888;
+  	box-shadow:2px 2px 2px #888888;
 	height:10%;
+  	background-image:linear-gradient(to right bottom, #ddf 0%, #fff 100%);
 	}
 .info {
 	background-color:#ccd;
@@ -211,21 +219,23 @@ td.transaction {
 .header {
 	padding:1px;
 	background-color:#ccc;
-box-shadow:2px 2px 2px #888888;
-	border-width:1px;
+	box-shadow:2px 2px 2px #888888;
+	border-width:3px;
 	border-color:white;
-	border-style:solid;
+	border-style:outset;
 	border-radius:2px;
 	}
 .headerR {
 	padding:1px;
 	background-color:#ffb;
-box-shadow:2px 2px 2px #888888;
-
-	border-width:1px;
-	border-color:red;
-	border-style:solid;
+	box-shadow:2px 2px 2px #888888;
+	border-width:3px;
+	border-color:white;
+	border-style:inset;
 	border-radius:2px;
+	}
+.header a{
+	text-align:right;
 	}
 #error { 
 	padding:20px;
@@ -266,3 +276,6 @@ box-shadow:2px 2px 2px #888888;
 #prezzi {	
 	background-color:#b77;
 	}
+.merce{
+    text-align:left;
+    }
