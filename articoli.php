@@ -31,50 +31,77 @@ include "access.php";
 
 if($_SESSION['transaction'] == "") $_SESSION['transaction'] = array();
 if ($access) {
-	include "transact.php";
-	foreach($_POST as $k => $v) $_SESSION[$k]=$v;
-print_r ($_POST);
+include "transact.php";
+foreach($_POST as $k => $v) $_SESSION[$k]=$v;
 }	
 ?>   
 <header>
 	<div id=nav >
 		<form name="input" action="articoli.php" method="post">
-		<ul><li class=header>
-			<a href=index.php> Home </a>
-			</li><li class=header>
-			<a href=amministrazione.php>Amministrazione</a>
-			</li><li class=header>
-			<a href=cassa.php>Cassa</a>
-			</li><li>
-	<?php if (! $access): ?> 
-			<input class=text type=password name="login" size=25></li><li>
-			<input type="submit" value="Login">
-	<?php else: ?>
-	
-		        <input type=hidden name="logout" value=1></li><li>
-			<input type="submit" value="Logout">
-	<?php endif; ?>
-		</li></ul>
+			<ul><li class=header>
+				<a href=amministrazione.php>Amministrazione</a>
+				</li><li class=header>
+				<a href=cassa.php>Cassa</a>
+				</li><li class=headerR>
+				<a href=articoli.php>Articoli</a>
+				</li><li>
+				<?php if (! $access): ?> 
+				<input class=text type=password name="login" size=25></li><li>
+				<input type="submit" value="Login">
+				<?php else: ?>
+
+				<input type=hidden name="logout" value=1></li><li>
+				<input type="submit" value="Logout">
+				<?php endif; ?>
+			</li></ul>
 		</form>   
 	</div>
 </header>
 
- 
+
 
 
 <div class=content>
 
-	<table class=GT> 
-		<tr>
+	<table class=GT> 	
+		<tr><td><table class=GT id=prezzi> 	
+			<th colspan=2> Gestione prezzi </th>
+			<tr>
 			<?php include "default.php"; ?>
-			<?php 
-			if($_SESSION['tabella'] == "") $_SESSION['tabella'] = 'nuovoutente';
-			if ($access) include 'articoliforms.php';
-			?>
+			<?php if ($access) include 'prezziforms.php';?>
+			</tr></table>
+			</td>
+		<td><table class=GT id=articoli>  
+			<th colspan=2> Gestione articoli </th>
+			<tr> <?php if ($access) include 'articoliforms.php';?> </tr>
+			<tr> <?php if ($access) include 'articolicassa.php';?> </tr>
+			</table>
+			</td></tr>
+		<tr>
+		<table class=GT id=transazione>  
+		<tr>
+			<td class=transaction>
+				<form name="input" action="articoli.php" method="post">
+					<input type=submit name = "reset" value="annulla tutte le modifiche">
+				</form>
+
+			</td>
+			<td class=transaction>
+				<form name="input" action="articoli.php" method="post">
+					<input type=submit name = "back" value="annulla l'ultima modifica">
+				</form>
+
+			</td>
+			<td class=transaction>
+				<form name="input" action="articoli.php" method="post">
+					<input type=submit name = "commit" value="applica indelebilmente le modifiche">
+				</form>
+
+			</td>
 		</tr>
-	</table>'
-	<?php if ($access) include 'articolicassa.php';
-	?>
+			</table>
+			</tr>
+	</table>
 
 </div> 
 <?php include "footer.html" ?>

@@ -2,7 +2,7 @@
 <table class=CSSTableGenerator>
 <tbody  >
 <?php
-$rq = "SELECT * FROM prodotti order by prezzo";
+$rq = "SELECT nome,prezzo FROM cassa join prodotti on prodotto=nome order by nome";
 $trs = $db -> query($rq) -> fetchAll(PDO::FETCH_ASSOC);
 foreach($trs as $tr) {
 	echo '<tr>';

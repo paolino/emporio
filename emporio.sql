@@ -121,5 +121,5 @@ CREATE TRIGGER nuovoacquisto instead of insert on nuovoacquisto begin
         insert into acquisti (utente) values (new.utente);
         end;
 create table cassa (
-	prodotto text references prodotti;
+	prodotto text unique references prodotti ON DELETE CASCADE
 	);

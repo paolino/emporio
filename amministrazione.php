@@ -38,9 +38,11 @@ if ($access) {
 <header>
 	<div id=nav >
 		<form name="input" action="amministrazione.php" method="post">
-		<ul><li class=header>
-			<a href=index.php> Home </a>
-			</li><li class=header>
+		<ul>
+			<li class=headerR>
+			<a href=amministrazione.php>Amministrazione</a>
+			</li>
+			<li class=header>
 			<a href=cassa.php>Cassa</a>
 			</li><li class=header>
 			<a href=articoli.php>Articoli</a>

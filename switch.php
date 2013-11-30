@@ -29,11 +29,23 @@ switch($_POST['sql']) {
 		break;
 	case  "nuovo_articolo":
 		$descrizione = removeprob($_POST['descrizione']);
-		$q="insert into prodotti values 
+		$q="replace into prodotti values 
 			(
 			 '{$descrizione}',
 			{$_POST['valore']}
 			);";
+		break;
+	case  "eliminazione_articolo":
+		$descrizione = removeprob($_POST['descrizione']);
+		$q="delete from prodotti where nome='{$descrizione}'";
+		break;
+	case "in_cassa":
+		$prodotto = removeprob($_POST['prodotto']);
+		$q = "insert into cassa values ('{$prodotto}')";
+		break;
+	case "out_cassa":
+		$prodotto = removeprob($_POST['prodotto']);
+		$q = "delete from cassa where prodotto='{$prodotto}'";
 		break;
 	case "nuova_ricarica":
 		$q="insert into ricariche default values";

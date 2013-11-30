@@ -22,6 +22,7 @@ header {
 #nav ul li {
 	display:inline;
 	margin-left:30px;	
+	color:#f23;
 	font-size:1.5em;
 	font-weight:bold;
 	}
@@ -123,12 +124,15 @@ input.selezioni
 {
     color: #abb;
     background-color: #abb;
+    width : 2em;
     height:1em
 }
 input.selezioni:hover  
 {
+    width : 2em;
     color: #cdd;
     background-color: #cdd;
+    height:1em
 
 }
 
@@ -205,7 +209,22 @@ td.transaction {
 	}
 
 .header {
+	padding:1px;
+	background-color:#ccc;
 box-shadow:2px 2px 2px #888888;
+	border-width:1px;
+	border-color:white;
+	border-style:solid;
+	border-radius:2px;
+	}
+.headerR {
+	padding:1px;
+	background-color:#ffb;
+box-shadow:2px 2px 2px #888888;
+
+	border-width:1px;
+	border-color:red;
+	border-style:solid;
 	border-radius:2px;
 	}
 #error { 
@@ -227,4 +246,23 @@ box-shadow:2px 2px 2px #888888;
 .molt {
 	background-color:#faa;
 	}
-
+.articoli {
+	background-color:#aad;
+	font-weight:bold;
+	font-size:1.1em;
+  box-shadow:2px 2px 2px #888888;
+	height:10%;
+	}
+.movearticoli {
+	background-color:#77d;
+	font-weight:bold;
+	font-size:1.1em;
+  box-shadow:2px 2px 2px #888888;
+	height:10%;
+	}
+#articoli {	
+	background-color:#7b7;
+	}
+#prezzi {	
+	background-color:#b77;
+	}
