@@ -15,12 +15,12 @@ unset($_POST['sql']);
 
 
 $db -> beginTransaction();
-
 foreach($_SESSION['transaction'] as $sql){
 	try {$db->query($sql);} catch(PDOException $e) 
 	{
 		array_pop($_SESSION['transaction']);
-		echo "<script> alert(\"{$e->getMessage()}\") </script>";
+                $o = htmlentities($e->getMessage());
+		echo "<script> alert(\"{$o}\") </script>";
 	}
 }
 if($_POST['commit'] != "") {
