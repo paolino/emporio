@@ -1,7 +1,7 @@
 emporio
 =======
 
-Software in italiano per la gestione semplificata di un emporio solidale con tessere a punti.
+Software open source in italiano per la gestione semplificata di un emporio solidale con tessere a punti.
 ---------
 
 Questo codice prevede un interfaccia web ad un database (sqlite) contenente le informazioni sugli utenti, le loro tessere 
@@ -9,7 +9,7 @@ e le loro spese.
 
 Non compendia la gestione del magazzino.
 
-L'interfaccia è suddivisa in 2 pagine, una per l'amministrazione con gestione transazionale delle oprazioni e un'altra per 
+L'interfaccia è suddivisa in 2 pagine, una per l'amministrazione con gestione transazionale delle operazioni ed un'altra per 
 il funzionamento della cassa.
 
 Gli utenti sono responsabili della loro identità tramite introduzione del loro PIN alla cassa.
