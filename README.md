@@ -32,30 +32,23 @@ Caratteristiche:
 Installazione:
 ----------------
 
- * abilitare il server http al servizio di pagine php con accesso pdo a sqlite 
-   (pacchetti 'lighttpd' 'php' 'php-pdo' 'php-cgi')
+ * installare docker (apt-get install -y docker.io)
 
- * copiare tutta la repository nella cartella di servizio (/srv/http per arch, /var/www per ubuntu)
+ * moversi nella cartella con il codice php
 
  * creare il database con 
 
   cat emporio.sql | sqlite3 emporio.db
-  
-  
+   
  * aggiungere il proprio segreto di amministrazione
 
   echo "insert into amministrazione ('segreto182783');" | sqlite3 emporio.db
   
- * spostare emporio.db nella directory di servizio e assegnare all'utente del server il diritto di scrittura sul file
- (utente 'http' per arch o www-data per Ubuntu) con 
+ * lanciare con ./run.sh
 
-  chown www-data emporio.db
-
- * visitare http://127.0.0.1/index.php
+ * visitare http://localhost:8080/index.php
  
-Installazione (archlinux):
--------
-  [Link](https://github.com/paolino/emporio/wiki/Installazione-arch-linux)
+ * fermare con ./stop.sh 
 
 Caveat:
 ---------
@@ -63,6 +56,6 @@ Caveat:
 Il software è parzialmente dedicato ad una situazione particolare (Borgo val di Taro) dove gli utenti sono identificati da 2 numeri univoci, 
 detti colloquio e utente che portano con se sulla tessera e presentano in cassa. 
 
-Attualmente è possibile scaricare copia del database all'indirizzo locale *emporio.db* il che presenta una falla nella 
+Attualmente è possibile scaricare copia del database all'indirizzo locale localhost/emporio.db il che presenta una falla nella 
 gestione della privacy. E' possibile migliorare con una cifratura del database.
 
