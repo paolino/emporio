@@ -2,7 +2,7 @@
 <table class=CSSTableGenerator>
 <tbody  >
 <?php
-$rq = "SELECT nome,prezzo FROM cassa join prodotti on prodotto=nome order by nome";
+$rq = "SELECT nome,prezzo FROM cassa  join prodotti on prodotto=nome order by nome";
 $trs = $db -> query($rq) -> fetchAll(PDO::FETCH_ASSOC);
 foreach($trs as $tr) {
 	echo '<tr>';
@@ -53,7 +53,7 @@ $rq = "SELECT * FROM prezzi order by prezzo";
 $trs = $db -> query($rq) -> fetchAll(PDO::FETCH_ASSOC);
 function snake($r,$k,$x) { 
 	if ($r % 2 == 0) return $x;
-	else return ($k - $x);
+	else return ($k - 1 - $x);
 	}
 for ($i = 0; $i < 9; $i++) {
 	echo '<tr>';

@@ -5,7 +5,7 @@
 	<input type=hidden name="sql" value="nuovo_acquisto"> 
 	<table>
 	<tr><td > Tessera </td><td > <input class=text type=text name="colloquio"  size=3 ></td>
-	<td >/<input class=text type=text name="utente"  size=3></td>
+	<td >/<input id=tessera class=text type=text name="utente"  size=3></td>
 	<td ><input type="submit" value="Apertura"></td></tr>
 	</table>
 	</form>

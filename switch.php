@@ -4,11 +4,10 @@ function removeprob($s){return str_replace("'", "", $s);}
 switch($_POST['sql']) {
 	case "nuovo_utente": 
 		$nominativo = removeprob($_POST['nominativo']);
-		$q="insert into nuovoutente (utente,colloquio,nominativo,pin,punti,valutazione,residuo) values 
+		$q="insert or replace into nuovoutente (utente,colloquio,nominativo,pin,punti,valutazione,residuo) values 
 			(
 			 {$_POST['utente']}
 			 ,{$_POST['colloquio']}
-
 			 ,'{$nominativo}'
 			 ,{$_POST['pin']}
 			 ,{$_POST['punti']}
@@ -41,11 +40,11 @@ switch($_POST['sql']) {
 		break;
 	case "in_cassa":
 		$prodotto = removeprob($_POST['prodotto']);
-		$q = "insert into cassa values ('{$prodotto}')";
+		$q="insert into cassa values ('{$prodotto}')";
 		break;
 	case "out_cassa":
 		$prodotto = removeprob($_POST['prodotto']);
-		$q = "delete from cassa where prodotto='{$prodotto}'";
+		$q="delete from cassa where prodotto='{$prodotto}'";
 		break;
 	case "nuova_ricarica":
 		$q="insert into ricariche default values";

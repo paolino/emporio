@@ -45,7 +45,6 @@ switch($_POST['sql']) {
 	default:
 		
 }
-//echo $q;
 unset($_POST['sql']);
 for ($i = 0; $i < $z; $i ++)
 try {$db->query($q);} catch(PDOException $e) {

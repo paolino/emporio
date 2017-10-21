@@ -41,12 +41,6 @@ CREATE TABLE ricariche (
               UNIQUE
               DEFAULT (date('now','localtime'))
     );
-CREATE TRIGGER ricarica AFTER INSERT ON ricariche
-        BEGIN
-            UPDATE utenti
-               SET residuo = punti
-               where julianday() < julianday (valutazione,'+6 months');
-        end;
 CREATE TABLE prezzi ( 
     prezzo   DOUBLE  NOT NULL primary key
     );
@@ -120,6 +114,11 @@ CREATE TRIGGER nuovoacquisto instead of insert on nuovoacquisto begin
         select case when ((select utente from utenti where utente = new.utente and colloquio = new.colloquio) isnull) then raise (abort,"utente sconosciuto") end;
         insert into acquisti (utente) values (new.utente);
         end;
-create table cassa (
-	prodotto text unique references prodotti ON DELETE CASCADE
-	);
+CREATE TABLE cassa (
+        prodotto text unique references prodotti ON DELETE CASCADE
+        );
+CREATE TRIGGER ricarica AFTER INSERT ON ricariche
+        BEGIN
+            UPDATE utenti
+               SET residuo = punti;
+end;

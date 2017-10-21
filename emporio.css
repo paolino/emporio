@@ -5,8 +5,7 @@ html, body {
   margin:0;
   padding:0;
   font-size:12px;
-  color:#444;
-  background-image:linear-gradient(to right bottom, #fff 0%, #ddd 100%);
+  color:#300a0a;
 
 }
 header {
@@ -17,46 +16,36 @@ header {
   position:relative;
   z-index:1;
   border-radius:2px;
-  box-shadow:2px 2px 2px #888888;;
-  background-image:linear-gradient(to right bottom, #fff 0%, #aaa 100%);
 }
 #nav ul li {
 	display:inline;
-	margin-left:30px;	
-	color:#f23;
-	font-size:1.2em;
-	font-weight:bold;
-  	background-image:linear-gradient(to right bottom, #fff 0%, #ffc 100%);
+	margin-left:3px;	
+	/*! color:#f23; */
+	/*! font-size:1.2em; */
+	/*! font-weight:bold; */
 	}
 .content {
   margin:20px 20px 20px 20px;
-  background:#bbc;
-  background-image:linear-gradient(to right bottom, #555 0%, #666 100%);
+  background:#c3c3c3;
   width:auto;
   position:relative;
   overflow:auto;
   border-radius:2px;
-  box-shadow:2px 2px 2px #888888;;
 }
 .acquisto {	
   margin:5px 5px 5px 5px;
   background:#776;
   border-radius:2px;
-  box-shadow:2px 2px 2px #888888;;
-  background-image:linear-gradient(to right bottom, #555 0%, #666 100%);
   }
 .asc {	
   margin:5px 5px 5px 5px;
   background:#998;
   border-radius:2px;
-  box-shadow:2px 2px 2px #888888;;
-  background-image:linear-gradient(to right bottom, #585 0%, #6a6 100%);
   }
 
 #report{
   margin-top: 20px;
   background: #eee;
-  background-image:linear-gradient(to right bottom, #555 0%, #666 100%);
 
   }
  footer {
@@ -69,13 +58,10 @@ header {
    z-index:1;
    background-color:#faf;
   border-radius:2px;
-  box-shadow:2px 2px 2px #888888;;
-  background-image:linear-gradient(to right bottom, #aaa 0%, #666 100%);
 }
 .CSSTableGenerator {
 margin:0px;padding:0px;
 border-radius:2px;
-  box-shadow:2px 2px 2px #888888;
 }
 td {
 	vertical-align:bottom
@@ -129,8 +115,8 @@ select {
 	
 input.selezioni 
 {
-    color: #abb;
-    background-color: #abb;
+    color: #165050;
+    background-color: #813e4f;
     width : 2em;
     height:1em
 }
@@ -139,8 +125,9 @@ input.selezioni:hover
     width : 2em;
     color: #cdd;
     background-color: #cdd;
-    height:1em
+    height:0em;
 
+    margin: unset;
 }
 
 input:hover
@@ -164,25 +151,20 @@ input
     font-weight: none;
     border:1px solid #999;
     border-radius:2px;
-    box-shadow:1px 1px 2px;
 }
 
 
 .magazzino {
 	background-color:#aad4dd;
-  box-shadow:2px 2px 2px #888888;
 	}
 #ricarica {
 	background-color:#fda;
-  box-shadow:2px 2px 2px #888888;
 	}
 .utente {
 	background-color:#adf;
-  box-shadow:2px 2px 2px #888888;
 	}
 .transaction {
 	background-color:#f77;
-  box-shadow:2px 2px 2px #888888;
 	}
 td.transaction {
 	padding:2px;
@@ -192,15 +174,12 @@ td.transaction {
 	background-color:#ccd;
 	font-weight:bold;
 	font-size:1.1em;
-  	box-shadow:2px 2px 2px #888888;
 	height:10%;
-  	background-image:linear-gradient(to right bottom, #ddf 0%, #fff 100%);
 	}
 .info {
 	background-color:#ccd;
 	font-weight:bold;
 	font-size:1.3em;
-  box-shadow:2px 2px 2px #888888;
 	}
 
 #acquistoselezionato { 
@@ -217,35 +196,38 @@ td.transaction {
 	}
 
 .header {
-	padding:1px;
+	padding:0.5em;
 	background-color:#ccc;
-	box-shadow:2px 2px 2px #888888;
-	border-width:3px;
+	border-width:1px;
 	border-color:white;
 	border-style:outset;
 	border-radius:2px;
 	}
 .headerR {
-	padding:1px;
+	padding:0.5em;
 	background-color:#ffb;
-	box-shadow:2px 2px 2px #888888;
-	border-width:3px;
+	border-width:1px;
 	border-color:white;
-	border-style:inset;
+	border-style:outset;
 	border-radius:2px;
 	}
 .header a{
 	text-align:right;
 	}
 #error { 
-	padding:20px;
-	margin:2px;
-	background-color:#faa;
-	font-weight:bold;
-	border-radius:2px;
-	box-shadow:2px 2px 2px #888888;
-
-	font-size:2em;
+	padding:2em;
+    margin:2px;
+	background-color:#f22;
+	border-radius:20px;
+	outline-radius:20px;
+    position:fixed;
+    z-index:1;
+	font-size:1.2em;
+    top:1em;
+    right:1em;
+    color:white;
+	border:3px solid white;
+	
 	}
 #fallimento {
 	background-color:#faa;
@@ -254,20 +236,18 @@ td.transaction {
 	background-color:#afa;
 	}
 .molt {
-	background-color:#faa;
+	background-color:azure;
 	}
 .articoli {
 	background-color:#aad;
 	font-weight:bold;
 	font-size:1.1em;
-  box-shadow:2px 2px 2px #888888;
 	height:10%;
 	}
 .movearticoli {
 	background-color:#77d;
 	font-weight:bold;
 	font-size:1.1em;
-  box-shadow:2px 2px 2px #888888;
 	height:10%;
 	}
 #articoli {	
@@ -279,3 +259,13 @@ td.transaction {
 .merce{
     text-align:left;
     }
+#transazione {
+    position:fixed;
+    right:0;
+    top:0;
+    z-index:1;
+    background-color:black;
+   padding:0;
+}
+#transazione li {list-style: none;background-color: transparent;margin:3px;}
+#tessera{margin-left:4px;}

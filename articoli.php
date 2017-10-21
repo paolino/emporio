@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
@@ -25,7 +28,6 @@ $(function() {
 
 
 <?php
-session_start();
 $_SESSION['page'] = "articoli.php";
 include "access.php";
 
@@ -64,43 +66,46 @@ foreach($_POST as $k => $v) $_SESSION[$k]=$v;
 <div class=content>
 
 	<table class=GT> 	
-		<tr><td><table class=GT id=prezzi> 	
+
+		<tr>
+		<ul id=transazione>  
+				<li class=transaction>
+				<form name="input" action="articoli.php" method="post">
+					<input type=submit name = "reset" value="annulla tutte le modifiche">
+				</form>
+
+			</li>
+			<li class=transaction>
+				<form name="input" action="articoli.php" method="post">
+					<input type=submit name = "back" value="annulla l'ultima modifica">
+				</form>
+
+			</li>
+			<li class=transaction>
+				<form name="input" action="articoli.php" method="post">
+					<input type=submit name = "commit" value="applica indelebilmente le modifiche">
+				</form>
+
+			</li>
+		</table>
+		</tr>
+		<tr>
+		<!--
+		<td><table class=GT id=prezzi> 	
 			<th colspan=2> Gestione prezzi </th>
 			<tr>
 			<?php include "default.php"; ?>
 			<?php if ($access) include 'prezziforms.php';?>
 			</tr></table>
 			</td>
+		--!>
 		<td><table class=GT id=articoli>  
 			<th colspan=2> Gestione articoli </th>
 			<tr> <?php if ($access) include 'articoliforms.php';?> </tr>
 			<tr> <?php if ($access) include 'articolicassa.php';?> </tr>
-			</table>
-			</td></tr>
-		<tr>
-		<table class=GT id=transazione>  
-		<tr>
-			<td class=transaction>
-				<form name="input" action="articoli.php" method="post">
-					<input type=submit name = "reset" value="annulla tutte le modifiche">
-				</form>
-
-			</td>
-			<td class=transaction>
-				<form name="input" action="articoli.php" method="post">
-					<input type=submit name = "back" value="annulla l'ultima modifica">
-				</form>
-
-			</td>
-			<td class=transaction>
-				<form name="input" action="articoli.php" method="post">
-					<input type=submit name = "commit" value="applica indelebilmente le modifiche">
-				</form>
-
-			</td>
+		   </table>
+		</td>
 		</tr>
-			</table>
-			</tr>
 	</table>
 
 </div> 

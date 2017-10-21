@@ -22,10 +22,9 @@
                 echo "<td style=\"width:1em\" > 
                         <input type=\"hidden\" name=\"sql\" value=\"cancella_spesa\">
 			<input type=\"hidden\" name=\"prodotto\" value=\"{$q['prodotto']}\">
+			<input type=\"hidden\" name=\"prezzo\" value=\"{$q['prezzo']}\">
 
-                        <input class=selezioni onClick=\"this.form.submit()\" type=submit name=prezzo value=\"" ;
-                print_r ($q['prezzo']); 
-                echo  ("\"></form> </td>") ; 
+                        <input class=selezioni onClick=\"this.form.submit()\" type=submit> </td></form>";
 
                 foreach ($q as $s){echo '<td>';print_r($s); echo '</td>';}
                 echo '</tr>';
