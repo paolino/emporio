@@ -12,9 +12,11 @@ foreach ($trs as $k => $q) {
 	echo "<td style=\"width:1em\" > 
 		<form name=input action=\"cassa.php\" method=POST>
 			<input type = hidden name= acquisto value={$q['acquisto']}>
-			<input class onClick=\"this.form.submit()\" type=submit  value=\"" ;
+			<button type=submit  value=\"" ;
 	echo "{$q['colloquio']}/{$q['utente']}"; 
-	echo  ("\"></form></td>") ; 
+        echo  "\">";
+        echo "{$q['colloquio']} / {$q['utente']}"; 
+        echo "</button> </form></td>" ; 
 
 }
 if ($_SESSION['acquisto'] == "") {

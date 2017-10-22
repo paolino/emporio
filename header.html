@@ -1,0 +1,25 @@
+
+<header>
+	<div id=nav >
+		<form name="input" action="amministrazione.php" method="post">
+		<ul>
+			<li class=headerR>
+			<a href=amministrazione.php>Amministrazione</a>
+			</li>
+			<li class=header>
+			<a href=cassa.php>Cassa</a>
+			</li><li class=header>
+			<a href=articoli.php>Articoli</a>
+			</li><li>
+	<?php if (! $access): ?> 
+			<input class=text type=password name="login" size=25></li><li>
+			<button type="submit"> Login </button>
+	<?php else: ?>
+	
+		        <input type=hidden name="logout" value=1></li><li>
+			<button type="submit"> Logout </button>
+	<?php endif; ?>
+		</li></ul>
+		</form>   
+	</div>
+</header>

@@ -8,14 +8,7 @@ session_start();
 <HTML>
 <HEAD>
 <TITLE>Emporio, prodotti</TITLE>
-<link href="emporio.css" rel="stylesheet" type="text/css">
-<link rel="icon" href="favicon.png?v=1">
-
-<link rel="stylesheet" href="/jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
-<script src="jquery-ui-1.10.3/jquery-1.9.1.js"></script>
-<script src="jquery-ui-1.10.3/ui/jquery.ui.core.js"></script>
-<script src="jquery-ui-1.10.3/ui/jquery.ui.widPOST.js"></script>
-<script src="jquery-ui-1.10.3/ui/jquery.ui.datepicker.js"></script>
+<?php include "head.html" ?>
 </head>
 <BODY >
 
@@ -65,30 +58,28 @@ foreach($_POST as $k => $v) $_SESSION[$k]=$v;
 
 <div class=content>
 
+<ul id= transazione>
+ <li class=transaction>
+	 <form name="input" action="articoli.php" method="post">
+		<button type=submit name = "reset" value=1> Annulla tutte le modifiche </button>
+			</form>
+
+		    </li>
+    <li class=transaction>
+	 <form name="input" action="articoli.php" method="post">
+		<button type=submit name = "back" value=1> Annulla l'ultima modifica </button>
+			</form>
+
+		    </li>
+    <li class=transaction>
+	 <form name="input" action="articoli.php" method="post">
+		<button type=submit name = "commit" value=1> Applica indelebilmente le modifiche </button>
+			</form>
+
+		    </li>
+    </ul>
 	<table class=GT> 	
 
-		<tr>
-		<ul id=transazione>  
-				<li class=transaction>
-				<form name="input" action="articoli.php" method="post">
-					<input type=submit name = "reset" value="annulla tutte le modifiche">
-				</form>
-
-			</li>
-			<li class=transaction>
-				<form name="input" action="articoli.php" method="post">
-					<input type=submit name = "back" value="annulla l'ultima modifica">
-				</form>
-
-			</li>
-			<li class=transaction>
-				<form name="input" action="articoli.php" method="post">
-					<input type=submit name = "commit" value="applica indelebilmente le modifiche">
-				</form>
-
-			</li>
-		</table>
-		</tr>
 		<tr>
 		<!--
 		<td><table class=GT id=prezzi> 	

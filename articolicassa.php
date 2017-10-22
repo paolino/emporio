@@ -32,7 +32,8 @@ $tksc=array("prodotto");
 
       echo "<td style=\"width: 50px\" >";
         echo "<form action={$_SESSION['page']} type=submit method=POST>";
-          echo "<input class=selezioni onClick=\"this.form.submit()\" type=submit name=articolo value='{$q['nome']}'>" ;
+          echo "<button class=selezioni onClick=\"this.form.submit()\" type=submit name=articolo value='{$q['nome']}'>" ;
+          echo 'Modifica';
           echo '</form>';
         echo  "</td>" ; 
 
@@ -48,18 +49,6 @@ $tksc=array("prodotto");
     <tr><td>
 
         <table class=CSSTableGenerator >   
-          <tr>
-            <?php
-            if($access) {
-            echo '<th>Inizio vendita</th>';
-            foreach($tksp as $k){
-            echo '<th>';  
-              print_r ($k);
-              echo '</th>';
-            }}
-            ?>
-          </tr>    
-
           <?php 
           if($access) foreach ($trsp as $k => $q) {
           echo '<tr>';
@@ -68,7 +57,8 @@ $tksc=array("prodotto");
             echo "<td style=\"width: 50px\" >";
               echo "<form action={$_SESSION['page']} type=submit method=POST>";
                 echo "<input type=hidden name=prodotto value ='{$q['nome']}'>";
-                echo "<input class=selezioni onClick=\"this.form.submit()\" type=submit name=sql value=in_cassa>" ;
+                echo "<button class=selezioni onClick=\"this.form.submit()\" type=submit name=sql value=in_cassa>" ;
+          echo 'Aggiungi';
                 echo '</form>';
               echo  "</td>" ; 
             foreach ($q as $s){echo '<td>';print_r($s); echo '</td>';}
@@ -81,17 +71,6 @@ $tksc=array("prodotto");
 
 
         <table class=CSSTableGenerator >   
-          <tr>
-            <?php
-            if($access) {
-            echo '<th >Fine vendita</th>';
-            foreach($tksc as $k){
-            echo '<th>';  
-              print_r ($k);
-              echo '</th>';
-            }}
-            ?>
-          </tr>
           <?php 
           if($access) foreach ($trsc as $k => $q) {
           echo '<tr>';
@@ -99,7 +78,9 @@ $tksc=array("prodotto");
             echo "<td style=\"width: 50px\" >";
               echo "<form action={$_SESSION['page']} type=submit method=POST>";
                 echo "<input type=hidden name=prodotto value ='{$q['prodotto']}'>";
-                echo "<input class=selezioni onClick=\"this.form.submit()\" type=submit name=sql value=out_cassa>" ;
+                echo "<button class=selezioni onClick=\"this.form.submit()\" type=submit name=sql value=out_cassa>" ;
+
+          echo 'Rimuovi';
                 echo '</form>';
               echo  "</td>" ; 
             foreach ($q as $s){echo '<td>';print_r($s); echo '</td>';}

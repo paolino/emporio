@@ -1,4 +1,4 @@
-a:link {text-decoration:none;}
+a:link {/*! text-decoration:none; */}
 a:visited {text-decoration:none;}
 html, body {
   height:100%;
@@ -71,7 +71,7 @@ td {
 background-color:#aad4dd;
 }
 .CSSTableGenerator td{
-vertical-align:top;
+vertical-align:baseline;
 font-weight:normal;
 background-color:#aad4ff;
 border-radius:2px;
@@ -88,7 +88,7 @@ margin:0px;padding:0px;
 border-radius:2px;
 }
 .GT td{
-vertical-align:top;
+vertical-align:baseline;
 font-weight:normal;
 border-radius:2px;
   }
@@ -102,7 +102,7 @@ input.text
 {
     color: #455;
     background-color: #eff;
-    height:1em;
+    /*! height:1em; */
 }
 
 
@@ -195,21 +195,6 @@ td.transaction {
 	background-color:#ad9;
 	}
 
-.header {
-	padding:0.5em;
-	background-color:#ccc;
-	border-width:1px;
-	border-color:white;
-	border-style:outset;
-	border-radius:2px;
-	}
-.headerR {
-	padding:0.5em;
-	background-color:#ffb;
-	border-width:1px;
-	border-color:white;
-	border-style:outset;
-	border-radius:2px;
 	}
 .header a{
 	text-align:right;
@@ -229,15 +214,8 @@ td.transaction {
 	border:3px solid white;
 	
 	}
-#fallimento {
-	background-color:#faa;
-	}
-#chiusura {
-	background-color:#afa;
-	}
-.molt {
-	background-color:azure;
-	}
+
+
 .articoli {
 	background-color:#aad;
 	font-weight:bold;
@@ -264,8 +242,16 @@ td.transaction {
     right:0;
     top:0;
     z-index:1;
-    background-color:black;
-   padding:0;
+    background-color:#666;
+   padding:5px;
+	 border-radius:5px;
 }
-#transazione li {list-style: none;background-color: transparent;margin:3px;}
+#transazione li {
+	 list-style: none;
+	 background-color: transparent;
+	 margin-top:5px;
+	 align-self:auto;
+   }
 #tessera{margin-left:4px;}
+button{padding:0px;
+	     white-space:nowrap;}

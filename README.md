@@ -42,7 +42,7 @@ Installazione:
    
  * aggiungere il proprio segreto di amministrazione
 
-  echo "insert into amministrazione ('segreto182783');" | sqlite3 emporio.db
+  echo "insert into amministrazione values ('segreto182783');" | sqlite3 emporio.db
   
  * lanciare con ./run.sh
 

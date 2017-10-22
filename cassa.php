@@ -6,13 +6,7 @@ session_start();
 <HTML>
 <HEAD>
 <TITLE>Emporio, cassa</TITLE>
-<link href="emporio.css" rel="stylesheet" type="text/css">
-
-<link rel="icon" href="favicon.png?v=1">
-<link rel="stylesheet" href="/jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
-<script src="jquery-ui-1.10.3/jquery-1.9.1.js"></script>
-<script src="jquery-ui-1.10.3/ui/jquery-ui.js"></script>
-
+<?php include "head.html" ?>
 </head>
 <BODY >
 
@@ -32,33 +26,9 @@ $_SESSION['utenteacquisto'] = $acs[0]['utente'];
 }
 
 include "cassaquery.php";
-
 ?>
-<header>
-    <div id=nav >
-        <form name="input" action="cassa.php" method="post">
-            <ul>
-                <li class=header>
-                  <a href=amministrazione.php>Amministrazione</a>
-                </li>
-                <li class=headerR>
-                  <a href=cassa.php>Cassa</a>
-                </li>
-                <li class=header>
-                  <a href=articoli.php>Articoli</a>
-                </li>
-                <li>
-                  <?php if (! $access): ?> 
-                    <input class=text type=password name="login" size=25></li><li>
-                    <input type="submit" value="Login">
-                  <?php else: ?>
-                    <input type=hidden name="logout" value=1></li><li>
-                    <input type="submit" value="Logout">
-                  <?php endif; ?>
-            </li></ul>
-        </form>   
-    </div>
-</header>
+
+<?php include "header.html" ?>
 
 <div class=content>
   <table class = GT>
@@ -84,7 +54,7 @@ include "cassaquery.php";
                           <tr>
                             <td> PIN </td>
                             <td ><input class=text type=password name="pin"  size=5 ></td>
-                            <td><input id=chiusura type="submit" value="Chiusura"></td></tr>
+                            <td> <button id=chiusura type="submit"> Chiusura </button></td></tr>
                           </table>
                         </form>
                       </td>
@@ -146,7 +116,7 @@ include "cassaquery.php";
                           <input type=hidden name="sql" value="fallimento_acquisto"> 
                           <table>
                             <tr>
-                              <td><input id=fallimento type="submit" value="Fallimento"></td>
+                              <td><button id=fallimento type="submit"> Fallimento </button></td>
                             </tr>
                           </table>
                         </form>

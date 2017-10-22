@@ -1,24 +1,3 @@
-<td  rowspan=2>
-<table class=CSSTableGenerator>
-<tbody  >
-<?php
-$rq = "SELECT nome,prezzo FROM cassa  join prodotti on prodotto=nome order by nome";
-$trs = $db -> query($rq) -> fetchAll(PDO::FETCH_ASSOC);
-foreach($trs as $tr) {
-	echo '<tr>';
-	echo '<td>';
-	echo '<form  action="cassa.php" method="POST">';
-	echo "<input class=merce style=\"width:100%\" type=submit name=\"nome\" value=\"{$tr['nome']}\">";
-	echo "<input type=hidden name=\"sql\" value=\"nuova_spesa\">";
-	echo "<input type=hidden name=\"prezzo\" value=\"{$tr['prezzo']}\">";
-	echo '</form>';
-	echo '</td>';
-	echo '</tr>';
-	}
-?>
-</tbody>
-</table>
-</td>
 <td rowspan=2>
  <form  action="cassa.php" method="POST">
 <table class=CSSTableGenerator >
@@ -26,14 +5,16 @@ foreach($trs as $tr) {
 $rq = "SELECT * FROM prezzi order by prezzo";
 $trs = $db -> query($rq) -> fetchAll(PDO::FETCH_ASSOC);
 
-for ($i = 0; $i < 10; $i++) {
+for ($i = 0; $i < 5; $i++) {
 	echo '<tr>';
 	for ($j = 0; $j < 1; $j++) {
 		$v= 1 + $i*1 + $j;
 		if ($v == $_SESSION['moltiplicatore'])
 			echo '<td id=moltiplicatore>';
 		else echo '<td>';		
-		echo "<input class=molt style=\"width:100%\" type=submit name=\"moltiplicatore\" value=\"{$v}\">";
+                echo "<button class=molt style=\"width:100%\" type=submit name=\"moltiplicatore\" value=\"{$v}\">";
+                echo $v;
+                echo "</button>";
 		echo "<input type=hidden name=\"sql\" value=\"imposta_moltiplicatore\">";
 		echo '</td>';
 	}
@@ -44,6 +25,31 @@ for ($i = 0; $i < 10; $i++) {
 </form>
 
 </td>
+<td  rowspan=2>
+<table class=CSSTableGenerator>
+<tbody  >
+<?php
+$rq = "SELECT nome,prezzo FROM cassa  join prodotti on prodotto=nome order by nome";
+$trs = $db -> query($rq) -> fetchAll(PDO::FETCH_ASSOC);
+foreach($trs as $tr) {
+	echo '<tr>';
+	echo '<td>';
+	echo '<form  action="cassa.php" method="POST">';
+        echo "<button class=merce style=\"width:100%\" type=submit name=\"nome\" value=\"{$tr['nome']}\">";
+        echo $tr['nome'];
+        echo "</button>";
+	echo "<input type=hidden name=\"sql\" value=\"nuova_spesa\">";
+	echo "<input type=hidden name=\"prezzo\" value=\"{$tr['prezzo']}\">";
+	echo '</form>';
+	echo '</td>';
+	echo '</tr>';
+	}
+?>
+</tbody>
+</table>
+</td>
+
+<!--
 <td  rowspan=2>
 <form  action="cassa.php" method="POST">
 <table class=CSSTableGenerator>
@@ -71,4 +77,5 @@ for ($i = 0; $i < 9; $i++) {
 </table>
 </form>
 </td>
+-->
 

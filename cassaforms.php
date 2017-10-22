@@ -6,14 +6,14 @@
 	<table>
 	<tr><td > Tessera </td><td > <input class=text type=text name="colloquio"  size=3 ></td>
 	<td >/<input id=tessera class=text type=text name="utente"  size=3></td>
-	<td ><input type="submit" value="Apertura"></td></tr>
+	<td > <button type="submit"> Apertura </button></td></tr>
 	</table>
 	</form>
 </td>
 <td class=cassa>
 	<table>
 	<tr><td> Selezione </td><td >
-<?php include "selezioneacquisto.php";?></td></tr>
+        <?php include "selezioneacquisto.php";?></td></tr>
 	</table>
 
 </td>

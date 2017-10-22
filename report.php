@@ -33,9 +33,11 @@
         foreach($tks as $k){
           echo '<th>';  
 	  echo '<div style="width:100%">';
-          echo "<input class=orderer type=submit onclick=\"this.form.submit()\" name=colonna value=\"";
+          echo "<button class=orderer type=submit onclick=\"this.form.submit()\" name=colonna value=\"";
           print_r ($k);
-          echo "\">";
+          echo "\"> ";
+
+          print_r ($k);
           echo '</div></th>';
         }}
         ?>
@@ -44,9 +46,10 @@
       if($access) foreach ($trs as $k => $q) {
         echo '<tr>';
 
-        echo "<td style=\"width: 50px\" > <input class=selezioni onClick=\"this.form.submit()\" type=submit name=record value=\"" ;
+        echo "<td style=\"width: 50px\" > 
+                <button class=selezioni onClick=\"this.form.submit()\" type=submit name=record value=\"" ;
         print_r ($k); 
-        echo  ("\"> </td>") ; 
+        echo  ("\"> Selezione</td>") ; 
         foreach ($q as $s){echo '<td>';print_r($s); echo '</td>';}
         echo '</tr>';
       }
