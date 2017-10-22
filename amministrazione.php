@@ -32,6 +32,7 @@ if ($access) {
 ?>   
 <?php include "header.html"?> 
 
+<?php if ($access) include 'amministrazione_transact.html' ?>;
 
 <div class=content>
 

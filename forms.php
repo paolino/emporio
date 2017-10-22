@@ -59,23 +59,3 @@
 
   </tr>
    
-<ul id= transazione>
- <li class=transaction>
-	 <form name="input" action="amministrazione.php" method="post">
-		<button type=submit name = "reset" value=1> Annulla tutte le modifiche </button>
-			</form>
-
-		    </li>
-    <li class=transaction>
-	 <form name="input" action="amministrazione.php" method="post">
-		<button type=submit name = "back" value=1> Annulla l'ultima modifica </button>
-			</form>
-
-		    </li>
-    <li class=transaction>
-	 <form name="input" action="amministrazione.php" method="post">
-		<button type=submit name = "commit" value=1> Applica indelebilmente le modifiche </button>
-			</form>
-
-		    </li>
-    </ul>

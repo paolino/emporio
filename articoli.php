@@ -42,11 +42,11 @@ foreach($_POST as $k => $v) $_SESSION[$k]=$v;
 				</li><li>
 				<?php if (! $access): ?> 
 				<input class=text type=password name="login" size=25></li><li>
-				<input type="submit" value="Login">
+				<button type="submit" value="Login">Login </button>
 				<?php else: ?>
 
 				<input type=hidden name="logout" value=1></li><li>
-				<input type="submit" value="Logout">
+				<button type="submit" value="Logout">Logout </button>
 				<?php endif; ?>
 			</li></ul>
 		</form>   

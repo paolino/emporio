@@ -73,12 +73,9 @@ header {
   position:relative;
   z-index:1;
   border-radius:2px;
-  height:1.3em;
+
 }
-#infooter {
-        position:absolute;
-        right:0;
-        }
+
 .CSSTableGenerator {
 margin:0px;padding:0px;
 border-radius:2px;
@@ -184,9 +181,7 @@ input
 }
 
 
-.magazzino {
-	background-color:#aad4dd;
-	}
+
 #ricarica {
 	background-color:#fda;
 	}
@@ -269,12 +264,13 @@ td.transaction {
     }
 #transazione {
     position:fixed;
-    right:0;
-    top:0;
+    right:1em;
+    top:1em;
     z-index:1;
     background-color:#dd9;
    padding:5px;
 	 border-radius:5px;
+    border:1px solid grey;
 }
 #transazione li {
 	 list-style: none;
@@ -282,6 +278,7 @@ td.transaction {
 	 margin-top:5px;
 	 align-self:auto;
    }
+ul {margin:0;}
 #tessera{margin-left:4px;}
 button{
 	white-space:nowrap;
