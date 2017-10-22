@@ -27,7 +27,6 @@ include "access.php";
 if($_SESSION['transaction'] == "") $_SESSION['transaction'] = array();
 if ($access) {
 	include "transact.php";
-	foreach($_POST as $k => $v) {echo ($k); echo ($v);}
 	foreach($_POST as $k => $v) $_SESSION[$k]=$v;
 }	
 ?>   
@@ -43,7 +42,7 @@ if ($access) {
 			if ($access) include 'forms.php';
 			?>
 		</tr>
-	</table>'
+	</table>
 	<?php if ($access) include 'report.php';
 	?>
 

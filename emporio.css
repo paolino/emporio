@@ -16,6 +16,11 @@ header {
   position:relative;
   z-index:1;
   border-radius:2px;
+      border-radius:2px;
+  border-bottom:1px solid #db6565;
+  border-top:1px solid #e39696;
+  padding-bottom:5px;
+  padding-top: 5px;
 }
 #nav ul li {
 	display:inline;
@@ -25,8 +30,8 @@ header {
 	/*! font-weight:bold; */
 	}
 .content {
-  margin:20px 20px 20px 20px;
-  background:#c3c3c3;
+
+
   width:auto;
   position:relative;
   overflow:auto;
@@ -48,17 +53,29 @@ header {
   background: #eee;
 
   }
- footer {
-  margin:2px;
-  height: auto;
+
+#footer {
   background-color: #aaf;
-  color:#ffa;
-  padding-left:50px;
+  color:black;
+  padding-left:0px;
   font-size:1em;
-   z-index:1;
-   background-color:#faf;
+  z-index:1;
+  background-color:#fff;
   border-radius:2px;
+  border-bottom:1px solid #db6565;
+  border-top:1px solid #e39696;
+  padding-bottom:5px;
+  padding-top: 5px;
+  margin-right:20px;
+      margin:2px;
+  padding:2px;
+  background-color: #aff;
+  position:relative;
+  z-index:1;
+  border-radius:2px;
+
 }
+
 .CSSTableGenerator {
 margin:0px;padding:0px;
 border-radius:2px;
@@ -72,13 +89,14 @@ background-color:#aad4dd;
 }
 .CSSTableGenerator td{
 vertical-align:baseline;
+background-color:#bde;
 font-weight:normal;
-background-color:#aad4ff;
+
 border-radius:2px;
   }
 .CSSTableGenerator th{
 vertical-align:top;
-background-color:#aad4aa;
+background-color:whitesmoke;
 font-weight:normal;
 border-radius:2px;
 }
@@ -87,8 +105,17 @@ border-radius:2px;
 margin:0px;padding:0px;
 border-radius:2px;
 }
+.GT tr{
+vertical-align:baseline;
+background-color:#4de;
+font-weight:normal;
+border-radius:2px;
+padding:3px;
+  }
+
 .GT td{
 vertical-align:baseline;
+background-color:#bdf;
 font-weight:normal;
 border-radius:2px;
   }
@@ -242,7 +269,7 @@ td.transaction {
     right:0;
     top:0;
     z-index:1;
-    background-color:#666;
+    background-color:#992;
    padding:5px;
 	 border-radius:5px;
 }
