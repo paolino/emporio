@@ -73,9 +73,12 @@ header {
   position:relative;
   z-index:1;
   border-radius:2px;
-
+  height:1.3em;
 }
-
+#infooter {
+        position:absolute;
+        right:0;
+        }
 .CSSTableGenerator {
 margin:0px;padding:0px;
 border-radius:2px;
