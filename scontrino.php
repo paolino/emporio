@@ -24,7 +24,7 @@
 			<input type=\"hidden\" name=\"prodotto\" value=\"{$q['prodotto']}\">
 			<input type=\"hidden\" name=\"prezzo\" value=\"{$q['prezzo']}\">
 
-                        <input class=selezioni onClick=\"this.form.submit()\" type=submit> </td></form>";
+                        <button class=selezioni onClick=\"this.form.submit()\" type=submit> Storno 1 </button> </td></form>";
 
                 foreach ($q as $s){echo '<td>';print_r($s); echo '</td>';}
                 echo '</tr>';

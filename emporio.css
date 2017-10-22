@@ -269,7 +269,7 @@ td.transaction {
     right:0;
     top:0;
     z-index:1;
-    background-color:#992;
+    background-color:#dd9;
    padding:5px;
 	 border-radius:5px;
 }
@@ -280,5 +280,13 @@ td.transaction {
 	 align-self:auto;
    }
 #tessera{margin-left:4px;}
-button{padding:0px;
-	     white-space:nowrap;}
+button{
+	white-space:nowrap;
+    background-color:#429842; /* Green */
+    border:1px black outset;
+    color:white;
+    padding:3px;
+    text-align: center;
+    text-decoration: none;
+    border-radius:3px;
+}
