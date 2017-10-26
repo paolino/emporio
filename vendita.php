@@ -26,14 +26,12 @@ for ($i = 0; $i < 5; $i++) {
 
 </td>
 <td  rowspan=2>
-<table class=CSSTableGenerator>
-<tbody  >
+<ul id=merci>
 <?php
 $rq = "SELECT nome,prezzo FROM cassa  join prodotti on prodotto=nome order by nome";
 $trs = $db -> query($rq) -> fetchAll(PDO::FETCH_ASSOC);
 foreach($trs as $tr) {
-	echo '<tr>';
-	echo '<td>';
+	echo '<li>';
 	echo '<form  action="cassa.php" method="POST">';
         echo "<button class=merce style=\"width:100%\" type=submit name=\"nome\" value=\"{$tr['nome']}\">";
         echo $tr['nome'];
@@ -41,12 +39,10 @@ foreach($trs as $tr) {
 	echo "<input type=hidden name=\"sql\" value=\"nuova_spesa\">";
 	echo "<input type=hidden name=\"prezzo\" value=\"{$tr['prezzo']}\">";
 	echo '</form>';
-	echo '</td>';
-	echo '</tr>';
+	echo '</li>';
 	}
 ?>
-</tbody>
-</table>
+</ul>
 </td>
 
 <!--

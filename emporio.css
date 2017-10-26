@@ -290,3 +290,6 @@ button{
     text-decoration: none;
     border-radius:3px;
 }
+#merci li{
+    display:inline-table; width:20em;
+    text-align: center;}
