@@ -291,5 +291,11 @@ button{
     border-radius:3px;
 }
 #merci li{
-    display:inline-table; width:20em;
-    text-align: center;}
+    display: inline-table;
+    width:15em;    
+}
+
+#merci button {
+        height:2.5em;
+        text-align:center;
+        }
