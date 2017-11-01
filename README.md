@@ -5,7 +5,7 @@ Software in italiano per la gestione semplificata di un emporio solidale con tes
 ---------
 
 Questo codice prevede un interfaccia web ad un database (sqlite) contenente le informazioni sugli utenti, le loro tessere 
-e le loro spese.
+e le loro spese..
 
 Non compendia la gestione del magazzino.
 
