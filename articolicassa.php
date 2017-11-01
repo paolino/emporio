@@ -1,7 +1,7 @@
 
 <?php    
 $tks=array();
-$rqp = "SELECT nome,prezzo  FROM prodotti";
+$rqp = "SELECT nome,prezzo  FROM prodotti order by nome";
 $trsq = $db -> query($rqp) -> fetchAll(PDO::FETCH_ASSOC);
 $tksq=array("prodotto","prezzo");  
 $rqp = "SELECT nome  FROM prodotti left outer join cassa on (prodotto = nome) where prodotto isnull";
